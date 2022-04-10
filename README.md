@@ -8,9 +8,9 @@
 
 **SSH Password**: pleasebenice
 
-**Site Username**: 
+**Site Username**: grader
 
-**Site Password**: 
+**Site Password**: pleasebenice
 
 ## Server Information
 **Host Name**: cse135-evan-puzon
