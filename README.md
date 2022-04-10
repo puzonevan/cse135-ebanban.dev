@@ -22,6 +22,10 @@
 **Ipv4**: 143.198.230.45
 
 # HW 1
+
+## Image Location
+All images are located under */hw1/images*
+
 ## Github Auto Deploy Setup
 I set up a Github auto deploy file on the server. There, I also set up a post receive hook to deploy to the var/www/ebanban.dev/public_html. I set up a remote origin on my local machine as git remote add prod ___ . As I push to my github repo, I also push to the remote origin prod to the server. 
 
