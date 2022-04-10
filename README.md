@@ -1,7 +1,11 @@
 # CSE 135 LAMP 
 ## Site 
 
-[Index](http://143.198.230.45/)
+[Main Site](http://ebanban.dev/)
+
+[Reporting](http://reporting.ebanban.dev/)
+
+[Collector](http://collector.ebanban.dev/)
 
 ## Grader Login 
 **SSH Username**: grader@143.198.230.45
@@ -17,15 +21,19 @@
 
 **Ipv4**: 143.198.230.45
 
-
-
-
 # HW 1
 ## Github Auto Deploy Setup
+I set up a Github auto deploy file on the server. There, I also set up a post receive hook to deploy to the var/www/ebanban.dev/public_html. I set up a remote origin on my local machine as git remote add prod ___ . As I push to my github repo, I also push to the remote origin prod to the server. 
 
 ## Summary of changes to HTML file in DevTools after compression
 The content encoding header of files have a value of gzip indicating compressed.
 
 ## Summary of removing 'server' header
+On my apache2.conf file located at etc/apache2/apache2.conf, I simply added 
 
-## Extra credit: Analytics configuration
+ServerTokens Full 
+SecServerSignature "CSE135 Server"
+
+and it changed the response header to what I wanted. 
+
+
