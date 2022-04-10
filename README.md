@@ -24,6 +24,7 @@
 ## Github Auto Deploy Setup
 
 ## Summary of changes to HTML file in DevTools after compression
+The content encoding header of files have a value of gzip indicating compressed.
 
 ## Summary of removing 'server' header
 
