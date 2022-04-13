@@ -1,4 +1,8 @@
 # CSE 135 LAMP 
+
+## Team 
+**Evan Puzon**: A15890485
+
 ## Site 
 
 [Main Site](http://ebanban.dev/)
