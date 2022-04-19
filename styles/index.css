@@ -68,6 +68,10 @@ h1{
     color: #1876D1;
     width: 100%;
     margin: 5px 0;
+    transition: .3s;
+}
+.homework input[type="submit"]:hover{
+    background: rgba(24, 118, 209, .05);
 }
 
 
