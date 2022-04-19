@@ -40,7 +40,15 @@
         <li><a href="/cgi-bin/perl/perl-get-echo.pl">GET Echo</a></li>
         <li><a href="/cgi-bin/perl/perl-post-echo.pl">Post Echo</a></li>
         <li><a href="/cgi-bin/perl/perl-general-echo.pl">General Echo</a></li>
-        <li><a href="/cgi-bin/perl/perl-sessions-1.pl">Sessioning</a></li>
+        <li>
+          <form action="/cgi-bin/perl/perl-sessions-1.pl" method="POST" id="form">
+            <label>
+              Name
+              <input type="text" name="username" autocomplete="off">
+            </label> <br>
+            <input type="submit" value="Sessioning"></input>
+          </form>
+        </li>
       </ul>
     </section>
     <section class="framework">

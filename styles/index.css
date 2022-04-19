@@ -54,6 +54,22 @@ h1{
 .homework a:hover{
     text-decoration: underline;
 }
+.homework input{
+    padding: 10px;
+    border: 1px solid #C4C4C4;
+    border-radius: 5px;
+}
+.homework label{
+    color: #1876D1;
+}
+.homework input[type="submit"]{
+    background: none;
+    border: 1px solid #1876D1;
+    color: #1876D1;
+    width: 100%;
+    margin: 5px 0;
+}
+
 
 #homework-2{
     display: flex;
