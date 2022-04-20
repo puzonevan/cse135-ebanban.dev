@@ -16,7 +16,9 @@
             $env = getenv();
 
             
-            echo $env;
+            foreach($env as $value){
+                echo $value;
+            }
 
         ?>
     </body>
