@@ -16,7 +16,7 @@
             $env = getenv();
 
             
-            foreach($env as $value){
+            foreach($env as $key => $value){
                 echo $value;
             }
 
