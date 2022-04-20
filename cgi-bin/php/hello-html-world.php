@@ -14,7 +14,7 @@
 
         <?php 
             $date = getdate();
-            $formatted = $date['weekday'] + $date['month'];
+            $formatted = $date['weekday'] . $date['month'];
 
             print("<p>Current Time: $formatted</p>");
         ?>
