@@ -14,9 +14,11 @@
 
         <?php 
             $date = getdate();
-            $formatted = $date['weekday'] . " " . $date['month'] . $date['mday'] . " ";
+            $formatted = $date['weekday'] . " " . $date['month'] . " " . $date['mday'] . " ";
 
             print("<p>Current Time: $formatted</p>");
+            $ip = $_SERVER['REMOTE_ADDR'];
+            print("<p>Your IP Address: $ip</p>");
         ?>
 
     </body>
