@@ -16,9 +16,7 @@
             $env = $_ENV;
 
             
-            foreach($_ENV as $key){
-                echo "<b>$key</b> =  <br />";
-            }
+            echo $env["USER"]
 
         ?>
     </body>
