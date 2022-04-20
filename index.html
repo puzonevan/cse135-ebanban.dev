@@ -54,14 +54,21 @@
     <section class="framework">
       <h3>C</h3>
       <ul>
-        <li><a href="/cgi-bin/perl/perl-hello-html.pl">Hello, Perl!</a></li>
-        <li><a href="/cgi-bin/perl/perl-hello-json.pl">Hello, Perl!(JSON)</a></li>
-        <li><a href="/cgi-bin/perl/perl-env.pl">Environment Variables (Manually)</a></li>
-        <li><a href="/cgi-bin/perl/perl-env-pm.pl">Environment Variables (CGI.pm)</a></li>
-        <li><a href="/cgi-bin/perl/perl-get-echo.pl">GET Echo</a></li>
-        <li><a href="/cgi-bin/perl/perl-post-echo.pl">Post Echo</a></li>
-        <li><a href="/cgi-bin/perl/perl-general-echo.pl">General Echo</a></li>
-        <li><a href="/cgi-bin/perl/perl-sessions-1.pl">Sessioning</a></li>
+        <li><a href="/cgi-bin/C/hello-html-world.cgi">Hello, Perl!</a></li>
+        <li><a href="/cgi-bin/C/hello-json-world.cgi">Hello, Perl!(JSON)</a></li>
+        <li><a href="/cgi-bin/C/c-env.cgi">Environment Variables (Manually)</a></li>
+        <li><a href="/cgi-bin/C/c-get-echo.cgi">GET Echo</a></li>
+        <li><a href="/cgi-bin/C/c-post-echo.cgi">Post Echo</a></li>
+        <li><a href="/cgi-bin/C/c-general-echo.cgi">General Echo</a></li>
+        <li>
+          <form action="/cgi-bin/C/c-sessions-1.cgi" method="POST" id="form">
+            <label>
+              Name
+              <input type="text" name="username" autocomplete="off">
+            </label> <br>
+            <input type="submit" value="Sessioning"></input>
+          </form>
+        </li>
       </ul>
     </section>
 
