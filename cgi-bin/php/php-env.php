@@ -17,7 +17,7 @@
 
             
             foreach($env as $key){
-                print("<b>$key</b> =  <br />");
+                echo "<b>$key</b> =  <br />";
             }
 
         ?>
