@@ -5,7 +5,7 @@
 
 <html>
     <head>
-        <title>Hello, PHP!</titl>
+        <title>Hello, PHP!</title>
     </head>
 
     <body>
