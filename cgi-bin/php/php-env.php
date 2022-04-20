@@ -17,7 +17,7 @@
 
             
             foreach($env as $key => $value){
-                echo $value;
+                echo "$key : $value";
             }
 
         ?>
