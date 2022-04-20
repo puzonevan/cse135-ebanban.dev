@@ -15,6 +15,7 @@
         <?php
             $env = $_ENV;
 
+            echo $env;
             foreach($env as $key => $value){
                 print("<b>$key</b> = $value <br />");
             }
