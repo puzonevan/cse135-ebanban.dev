@@ -13,10 +13,10 @@
     <body>
         <h1 align="center">Environment Variables</h1>
         <?php
-            $env = $_ENV;
+            $env = phpinfo(true);
 
             
-            echo $env["USER"]
+            echo $env;
 
         ?>
     </body>
