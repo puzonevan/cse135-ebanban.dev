@@ -13,7 +13,7 @@
     <body>
         <h1 align="center">Environment Variables</h1>
         <?php
-            $env = getenv();
+            $env = $_SERVER;
 
             
             foreach($env as $key => $value){
