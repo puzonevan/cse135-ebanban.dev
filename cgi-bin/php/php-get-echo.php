@@ -17,10 +17,12 @@
             $query = [];
             parse_str($_SERVER["QUERY_STRING"], $query);
 
-            print("<b>Query String: </b> $queryString");
+            
+            print("<p>Raw Query String: $queryString</p><br />");
 
+            print("<p>Formatted Query String: </p>");
             foreach($query as $key => $value){
-                 echo "<b>$key</b>: $value";
+                 echo "<b>$key</b>: $value<br />";
             }
         ?>
     </body>
