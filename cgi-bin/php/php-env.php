@@ -16,7 +16,7 @@
             $env = $_ENV;
 
             
-            foreach($env as $key){
+            foreach($_ENV as $key){
                 echo "<b>$key</b> =  <br />";
             }
 
