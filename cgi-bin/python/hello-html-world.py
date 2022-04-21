@@ -11,11 +11,11 @@ print("<body>")
 
 print("<h1>Evan Puzon - Hello Python!</h1>")
 print("<p>This page was generated with the python programming language</p>")
-# today = date.today()
-# print("<p>Current Date: ", today.strftime("%B %d, %Y"), "</p>")
-# hostname = socket.gethostname()
-# ip = socket.gethostbyname(hostname)
-# print("<p>Your IP Address: ", ip, "</p>")
+today = date.today()
+print("<p>Current Date: ", today.strftime("%B %d, %Y"), "</p>")
+hostname = socket.gethostname()
+ip = socket.gethostbyname(hostname)
+print("<p>Your IP Address: ", ip, "</p>")
 
 print("</body></html>")
 
