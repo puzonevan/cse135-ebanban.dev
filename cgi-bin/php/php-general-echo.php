@@ -13,9 +13,9 @@
 
     <body>
         <h1 align="center">General Request Echo</h1>
-        <p><b>HTTP Protocol: </b><?php print($_ENV["SERVER_PROTOCOL"])?></p>
-        <p><b>HTTP Method: </b><?php echo $_ENV["REQUEST_METHOD"]?></p>
-        <p><b>Query String: </b><?php echo $_ENV["QUERY_STRING"]?></p>
+        <p><b>HTTP Protocol: </b><?php $_SERVER["SERVER_PROTOCOL"]?></p>
+        <p><b>HTTP Method: </b><?php echo $_SERVER["REQUEST_METHOD"]?></p>
+        <p><b>Query String: </b><?php echo $_SERVER["QUERY_STRING"]?></p>
         <?php
             $data = $_POST;
 
