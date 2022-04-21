@@ -15,8 +15,13 @@ data = cgi.FieldStorage()
 print("<p>Message Body</p>")
 print("<ul>")
 
+params = {}
 for key in data.keys():
-    print("<li>", key, " = ", data[key].value, "</li>")
+    params[key] = data[key].value;
+
+for key in params.keys(): 
+    print("<li>", key, " = ", params[key], "</li>")
+
 
 print("</ul>")
 
