@@ -2,8 +2,8 @@
 # from datetime import date
 # import socket
 
-print("Cache-Control: no-cache")
-print("Content-type: text/html")
+# print("Cache-Control: no-cache")
+# print("Content-type: text/html")
 
 # print("<html>")
 # print("<head><title>Hello CGI World</title></head>")
@@ -19,7 +19,7 @@ print("Content-type: text/html")
 
 # print("</body></html>")
 
-# print("Content-Type: text/html;charset=utf-8")
+print("Content-Type: text/html;charset=utf-8")
 # print ("Content-type:text/html\r\n")
 # print("<H1> Hello, From python server :) </H1>")
 
