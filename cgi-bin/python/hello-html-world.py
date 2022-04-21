@@ -2,7 +2,7 @@
 from datetime import date
 import socket
 
-print("Cache-Control:no-cache\r\n\r\n")
+print("Cache-Control:no-cache\n\n")
 print("Content-Type:text/html\r\n\r\n")
 
 print("<html>")
