@@ -12,6 +12,8 @@ print("<body>")
 query = os.environ["QUERY_STRING"]
 formatted = urllib.parse.parse_qs(query)
 print("<p>Raw Query String: ", query ,"</p>")
+
+print("<p>Formatted Query String</p>")
 print("<ul>")
 
 for key in formatted.keys():
