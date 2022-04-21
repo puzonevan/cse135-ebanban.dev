@@ -3,7 +3,7 @@ from datetime import date
 import socket
 
 print("Cache-Control:no-cache\n")
-print("Content-type:text/html\n")
+print("Content-Type:text/html\n")
 
 print("<html>")
 print("<head><title>Hello CGI World</title></head>")
