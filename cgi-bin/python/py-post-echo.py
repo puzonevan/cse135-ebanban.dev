@@ -13,6 +13,7 @@ print("<h1>Post Request Echo</h1>")
 data = cgi.FieldStorage()
 
 print("<p>Message Body</p>")
+print("<p>",data,  "</p>")
 print("<ul>")
 
 for key in data.keys():
