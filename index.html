@@ -79,7 +79,15 @@
         <li><a href="/cgi-bin/php/hello-json-world.php">Hello, PHP!(JSON)</a></li>
         <li><a href="/cgi-bin/php/php-env.php">Environment Variables (Manually)</a></li>
         <li><a href="/cgi-bin/php/php-get-echo.php">GET Echo</a></li>
-        <li><a href="/cgi-bin/php/php-post-echo.php">Post Echo</a></li>
+        <li>
+          <form action="/cgi-bin/php/php-post-echo.php" method="POST" id="form">
+            <label>
+              Name
+              <input type="text" name="username" autocomplete="off">
+            </label> <br>
+            <input type="submit" value="POST"></input>
+          </form>
+        </li>
         <li><a href="/cgi-bin/php/php-general-echo.php">General Echo</a></li>
         <li>
           <form action="/cgi-bin/C/c-sessions-1.cgi" method="POST" id="form">
