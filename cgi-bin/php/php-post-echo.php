@@ -20,7 +20,7 @@
             
             print("<ul>");
             foreach($data as $key => $value){
-                print("<li>$key = $value</li>");
+                print("<li>$key = $value </li>");
             }
             print("</ul>");
         ?>
