@@ -17,7 +17,7 @@ print("<ul>")
 
 params = {}
 for key in data.keys():
-    params[key] = data[key];
+    params[key] = data[key].value;
 
 for key in params.keys(): 
     print("<li>", key, " = ", params[key], "</li>")
