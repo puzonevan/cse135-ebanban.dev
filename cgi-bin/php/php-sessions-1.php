@@ -7,6 +7,7 @@
     $name = "";
     if($_POST["username"]){
         $name = $_POST["username"];
+        $_SESSION["username"] = $name;
     }else{
         $name = $_SESSION["username"];
     }
