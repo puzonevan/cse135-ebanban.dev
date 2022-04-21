@@ -3,7 +3,7 @@
 # import socket
 
 # print("Cache-Control: no-cache")
-print("Content-type:text/html")
+print("Content-type:text/html\r\n")
 
 # print("<html>")
 # print("<head><title>Hello CGI World</title></head>")
