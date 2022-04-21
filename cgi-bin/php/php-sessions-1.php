@@ -4,8 +4,12 @@
 
     session_start();
 
-    $name = $_POST["username"];
-    $_SESSION["username"] = $name;
+    $name = "";
+    if($_POST["username"]){
+        $name = $_POST["username"];
+    }else{
+        $name = $_SESSION["username"];
+    }
 
 ?>
 
