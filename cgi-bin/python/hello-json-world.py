@@ -7,7 +7,7 @@ print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
 print("<html>")
-print("<head><title>Hello CGI World</title></head>")
+print("<head><title>Hello CGI World JSON</title></head>")
 print("<body>")
 
 today = date.today()
