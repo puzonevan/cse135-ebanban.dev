@@ -3,8 +3,7 @@
     header("Content-type: text/html");
 
     $_SESSION = array();
-    session_destroy();
-
+    if (session_status() == PHP_SESSION_ACTIVE) { session_destroy(); }
 ?>
 
 
