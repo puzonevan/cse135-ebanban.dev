@@ -2,8 +2,8 @@
 from datetime import date
 import socket
 
-print("Cache-Control:no-cache\r\n")
-print("Content-Type:text/html\r\n")
+print("Cache-Control:no-cache\r\n\r\n")
+print("Content-Type:text/html\r\n\r\n")
 
 print("<html>")
 print("<head><title>Hello CGI World</title></head>")
