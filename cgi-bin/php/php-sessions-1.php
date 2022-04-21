@@ -4,7 +4,7 @@
 
     session_start();
 
-    $name = $_GET["username"];
+    $name = $_POST["username"];
     $_SESSION["username"] = $name;
 
 ?>
