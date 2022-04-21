@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# from datetime import date
-# import socket
+from datetime import date
+import socket
 
 print("Cache-Control:no-cache\n")
 print("Content-type:text/html\r\n")
