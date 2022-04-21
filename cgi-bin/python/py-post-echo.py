@@ -17,7 +17,7 @@ print("<p>",data,  "</p>")
 print("<ul>")
 
 for key in data.keys():
-    print("<li>", key, " = ", data[key], "</li>")
+    print("<li>", key, " = ", data[key].value, "</li>")
 
 print("</ul>")
 
