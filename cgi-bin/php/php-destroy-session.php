@@ -25,7 +25,7 @@
 </html>
 
 <?php 
-    setcookie('username', '', time() - 3600, '/cgi-bin/php/php-destroy-session.php');
+    setcookie('username', '', time() - 3600);
     unset($_COOKIE['username']);
     # https://stackoverflow.com/questions/3989347/php-why-cant-i-get-rid-of-this-session-id-cookie
     $params = session_get_cookie_params();
