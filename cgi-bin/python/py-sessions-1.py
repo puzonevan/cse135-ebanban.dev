@@ -7,7 +7,10 @@ cookies = {}
 for key in data.keys():
     cookies[key] = data[key].value;
 
-username = cookies["username"]
+username = "mysterio"
+if cookies["username"]: 
+    username = cookies["username"]
+    
 # # https://www.tutorialspoint.com/python/python_cgi_programming.htm
 # if environ.has_key('HTTP_COOKIE'):
 #    for cookie in map(environ['HTTP_COOKIE'].split(';').strip()):
@@ -17,7 +20,7 @@ username = cookies["username"]
 # elif "username" in cookies.keys():
 #     username = cookies["username"]
 
-
+print("Set-Cookie:username = ", username)
 print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
