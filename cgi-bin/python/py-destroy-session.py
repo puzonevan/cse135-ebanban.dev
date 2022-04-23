@@ -3,11 +3,9 @@ from os import environ
 
 
 
-username = "mysterio"
-if "HTTP_COOKIE" in environ.keys():
-    username = environ['HTTP_COOKIE']
 
-print("Set-Cookie:", username, " expires=Mon, 26 Aug 2013 18:30:00 GMT")
+
+print("Set-Cookie: expires=Mon, 26 Aug 2013 18:30:00 GMT")
 print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
