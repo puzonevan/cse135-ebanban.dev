@@ -20,7 +20,7 @@
         <p><a href="/cgi-bin/php/php-sessions-2.php">Session Page 2</a></p>
         <p><a href="/index.html">Home</a></p>
         <?php 
-
+            set_cookie("username", "", time() - 3600, "/");
             session_unset();
             session_destroy();
         ?>
