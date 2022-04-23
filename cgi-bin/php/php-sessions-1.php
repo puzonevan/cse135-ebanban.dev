@@ -26,7 +26,7 @@
     <body>
         <h1 align="center">PHP Sessions Page 1</h1>
 
-        <p><b>Name: </b><?php if($_COOKIE["username"]){ echo $_COOKIE["username"]; }else{ echo "mysterio"; }?></p>
+        <p><b>Name: </b><?php if($_COOKIE["username"]){ echo $name; }else{ echo "mysterio"; }?></p>
         
         <p><a href="/cgi-bin/php/php-sessions-2.php">Session Page 2</a></p>
         <p><a href="/index.html">Home</a></p>
