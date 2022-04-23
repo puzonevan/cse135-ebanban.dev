@@ -2,6 +2,12 @@
     header("Cache-control: no-cache");
     header("Content-type: text/html");
     session_start();
+
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', 0, $params['path'], $params['domain'], $params['secure'], isset($params['httponly']));
+    set_cookie("username", "", time() - 3600, "/");
+    session_unset();
+    session_destroy();
 ?>
 
 
@@ -24,10 +30,3 @@
 
 </html>
 
-<?php 
-    $params = session_get_cookie_params();
-    setcookie(session_name(), '', 0, $params['path'], $params['domain'], $params['secure'], isset($params['httponly']));
-    set_cookie("username", "", time() - 3600, "/");
-    session_unset();
-    session_destroy();
-?>
