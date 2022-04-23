@@ -25,9 +25,9 @@
 </html>
 
 <?php 
+    set_cookie("username", "");
     $params = session_get_cookie_params();
     setcookie(session_name(), '', 0, $params['path'], $params['domain'], $params['secure'], isset($params['httponly']));
-    set_cookie("username", "");
     session_unset();
     session_destroy();
 ?>
