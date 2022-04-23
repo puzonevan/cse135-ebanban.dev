@@ -15,15 +15,13 @@ print("<html>")
 print("<head><title>Python Sessions</title></head>")
 print("<body>")
 
-print("<h1>Python Sessions Page 1</h1>")
+print("<h1>Session Destroyed</h1>")
 
-print("<p><b>Name: </b>", username, "</p>")
 
+print("<p><a href='/cgi-bin/python/py-sessions-1.py'>Session Page 1</a></p>")
 print("<p><a href='/cgi-bin/python/py-sessions-2.py'>Session Page 2</a></p>")
+
 print("<p><a href='/index.html'>Home</a></p>")
-print("<form action='/cgi-bin/python/py-destroy-session.py' method='GET'>")
-print("<button type='submit'>Destroy Session</button>")
-print("</form>")
 
 
 print("</body></html>")
