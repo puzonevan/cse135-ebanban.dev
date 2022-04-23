@@ -15,7 +15,7 @@ elif "HTTP_COOKIE" in environ.keys():
     #     (key, value) = cookie.split('=')
     #     if key == "username":
     #         username = value
-    username = environ['HTTP_COOKIE']
+    username = environ['HTTP_COOKIE']["username"]
 
 # # https://www.tutorialspoint.com/python/python_cgi_programming.htm
 # if environ.has_key('HTTP_COOKIE'):
