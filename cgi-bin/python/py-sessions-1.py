@@ -11,10 +11,11 @@ username = "mysterio"
 if "username" in cookies.keys(): 
     username = cookies["username"]
 elif "HTTP_COOKIE" in environ.keys(): 
-    for cookie in map(environ['HTTP_COOKIE'].split(';').strip()):
-        (key, value) = cookie.split('=')
-        if key == "username":
-            username = value
+    # for cookie in map(environ['HTTP_COOKIE'].split(';').strip()):
+    #     (key, value) = cookie.split('=')
+    #     if key == "username":
+    #         username = value
+    username = environ['HTTP_COOKIE']
 
 # # https://www.tutorialspoint.com/python/python_cgi_programming.htm
 # if environ.has_key('HTTP_COOKIE'):
@@ -25,15 +26,15 @@ elif "HTTP_COOKIE" in environ.keys():
 # elif "username" in cookies.keys():
 #     username = cookies["username"]
 
-print("Set-Cookie:username =", username)
+print("Set-Cookie:", username)
 print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
 print("<html>")
-print("<head><title>PHP Sessions</title></head>")
+print("<head><title>Python Sessions</title></head>")
 print("<body>")
 
-print("<h1>PHP Sessions Page 1</h1>")
+print("<h1>Python Sessions Page 1</h1>")
 
 print("<p><b>Name: </b>", username, "</p>")
 
