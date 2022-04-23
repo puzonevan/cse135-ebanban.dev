@@ -7,7 +7,7 @@ cookies = {}
 for key in data.keys():
     cookies[key] = data[key].value;
 
-username = "mysterio"
+username = cookies["username"]
 # # https://www.tutorialspoint.com/python/python_cgi_programming.htm
 # if environ.has_key('HTTP_COOKIE'):
 #    for cookie in map(environ['HTTP_COOKIE'].split(';').strip()):
