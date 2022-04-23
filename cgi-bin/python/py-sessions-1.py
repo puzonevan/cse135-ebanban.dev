@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 from os import environ
-import cgi, cgitb 
-import Cookie
-
-c = Cookie.SimpleCookie()
+import cgi, cgitb
 
 data = cgi.FieldStorage()
 cookies = {}
