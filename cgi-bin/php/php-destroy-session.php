@@ -25,7 +25,8 @@
 </html>
 
 <?php 
-    set_cookie("username", "");
+    unset($_COOKIE['username']);
+    # https://stackoverflow.com/questions/3989347/php-why-cant-i-get-rid-of-this-session-id-cookie
     $params = session_get_cookie_params();
     setcookie(session_name(), '', 0, $params['path'], $params['domain'], $params['secure'], isset($params['httponly']));
     session_unset();
