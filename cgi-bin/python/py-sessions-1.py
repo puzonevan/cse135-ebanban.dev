@@ -4,8 +4,9 @@ import cgi, cgitb
 
 data = cgi.FieldStorage()
 cookies = {}
-for key in data.keys():
-    cookies[key] = data[key].value;
+if data: 
+    for key in data.keys():
+        cookies[key] = data[key].value;
 
 username = "mysterio"
 if cookies["username"]: 
