@@ -44,4 +44,10 @@ SecServerSignature "CSE135 Server"
 
 and it changed the response header to what I wanted. 
 
+# HW 2
+
+**Image Location:** /hw2/images
+
+**Source Code:** /cgi-bin/
+
 
