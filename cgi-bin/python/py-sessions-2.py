@@ -5,7 +5,7 @@ import cgi, cgitb
 
 username = "mysterio"
 if "HTTP_COOKIE" in environ.keys(): 
-    username = environ['HTTP_COOKIE'].split(';').strip()
+    username = environ['HTTP_COOKIE'].split(';')
         # (key, value) = cookie.split('=')
         # if key == "username":
         #     username = value
