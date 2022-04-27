@@ -5,10 +5,10 @@ import cgi, cgitb
 
 username = "mysterio"
 if "HTTP_COOKIE" in environ.keys(): 
-    for cookie in environ['HTTP_COOKIE'].split(';').strip().map():
-        (key, value) = cookie.split('=')
-        if key == "username":
-            username = value
+    username = environ['HTTP_COOKIE'].split(';').strip()
+        # (key, value) = cookie.split('=')
+        # if key == "username":
+        #     username = value
 
 print("Set-Cookie:username=", username)
 print("Cache-Control:no-cache")
