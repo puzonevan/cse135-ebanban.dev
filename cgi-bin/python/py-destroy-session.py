@@ -2,10 +2,7 @@
 from os import environ
 
 
-
-
-
-print("Set-Cookie: expires=Mon, 26 Aug 2013 18:30:00 GMT")
+print("Set-Cookie:username=;Max-Age=-1;")
 print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
