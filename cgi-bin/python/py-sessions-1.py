@@ -26,7 +26,7 @@ elif "HTTP_COOKIE" in environ.keys():
 # elif "username" in cookies.keys():
 #     username = cookies["username"]
 
-print("Set-Cookie:", username)
+# print("Set-Cookie: )
 print("Cache-Control:no-cache")
 print("Content-Type:text/html\r\n\r\n")
 
