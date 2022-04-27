@@ -10,12 +10,7 @@ for key in data.keys():
 username = "mysterio"
 if "username" in cookies.keys(): 
     username = cookies["username"]
-elif "HTTP_COOKIE" in environ.keys(): 
-    # for cookie in map(environ['HTTP_COOKIE'].split(';').strip()):
-    #     (key, value) = cookie.split('=')
-    #     if key == "username":
-    #         username = value
-    username = environ['HTTP_COOKIE']
+
 
 # # https://www.tutorialspoint.com/python/python_cgi_programming.htm
 # if environ.has_key('HTTP_COOKIE'):
