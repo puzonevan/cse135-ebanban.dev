@@ -5,7 +5,7 @@
     "comments": [
       { "id": 1, "body": "some comment", "postId": 1 }
     ],
-    "characters": [
+    "genshincharacters": [
       { "id": 1, "name": "Venti", "element": "anemo" }
     ],
     "profile": { "name": "typicode" }
