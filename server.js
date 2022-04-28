@@ -16,4 +16,4 @@ var router = jsonServer.router('db.json');
 
 server.use(router);
 
-server.listen(3001);
+server.listen(3000, 'ebanban.dev');
