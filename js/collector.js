@@ -45,7 +45,14 @@ const activity = {
 
 window.onload = collectStaticPerformance();
 
+const logMouse = (e) => {
+    const mouseClick = {
+        "x": e.clientX, 
+        "y": e.clientY, 
+        "button": e.button
+    }
+    activity["mouse-clicks"].push(mouseClick);
+    console.log(activity);
+}
 
-window.addEventListener("mousemove", () => {
-    
-});
+window.addEventListener("mouseup", logMouse);
