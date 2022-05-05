@@ -3,7 +3,7 @@
  * Data Collection
  */
 
-const collect = () => {
+const collectStaticPerformance = () => {
     console.log("Hello World");
 
     let static = {
@@ -18,17 +18,34 @@ const collect = () => {
         "network-connection": navigator.connection
     }
 
-    let performance = {
-        "load-time": {
-            "time": window.performance,
-            "start": window.performance.timing.domContentLoadedEventStart, 
-            "end": window.performance.timing.domContentLoadedEventEnd, 
-            "total": window.performance.timing.domContentLoadedEventEnd - window.performance.timing.domContentLoadedEventStart
-        }
+    const perf = performance.getEntriesByType("navigation");
+
+    let performanceActivity = {
+        "load-time": perf[0].toJSON(), 
+        "total-time": perf[0].connectEnd - perf[0].connectStart
     }
 
     console.log(static);
-    console.log(performance);
+    console.log(performanceActivity);
 }
 
-window.onload = collect();
+const activity = {
+    "mouse-cursor": [], 
+    "mouse-clicks": [], 
+    "mouse-scrolls": [], 
+    "keyboard-events": [], 
+    "idle-events": [], 
+    "user-entered": {}, 
+    "user-left": {}, 
+    "user-page": "", 
+
+}
+
+
+
+window.onload = collectStaticPerformance();
+
+
+window.addEventListener("mousemove", () => {
+    
+});
