@@ -49,6 +49,8 @@ const collectStaticPerformance = () => {
         console.log("successful get");
     });
 
+    console.log("hello");
+
 }
 
 const activity = {
