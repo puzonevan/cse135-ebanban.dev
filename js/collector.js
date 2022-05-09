@@ -39,9 +39,14 @@ const collectStaticPerformance = () => {
     console.log(static);
     console.log(performanceActivity);
 
-    postStatic("https://ebanban.dev/api/static", static)
+    // postStatic("https://ebanban.dev/api/static", static)
+    // .then(data => {
+    //     console.log(data);
+    // });
+    fetch("https://ebanban.dev/api/static")
+    .then(response => response.json())
     .then(data => {
-        console.log(data);
+        console.log("successful get");
     });
 
 }
