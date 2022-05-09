@@ -50,6 +50,12 @@ const collectStaticPerformance = () => {
         console.log(data);
     });
 
+    postData("https://ebanban.dev/api/static", staticData)
+    .then(data => {
+        console.log("Success");
+        console.log(data)
+    });
+
 
 }
 
