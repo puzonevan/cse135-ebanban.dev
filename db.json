@@ -1,12 +1,27 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "genshincharacters": [
-      { "id": 1, "name": "Venti", "element": "anemo" }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "genshincharacters": [
+    { "id": 1, "name": "Venti", "element": "anemo" }
+  ],
+  "profile": { "name": "typicode" }, 
+  "static": [
+    {
+      "id": 1,
+      "user-agent": "nice", 
+      "user-language": "en", 
+      "cookies-enabled": true, 
+      "javascript-enabled": true, 
+      "images-enabled": true, 
+      "css-enabled": true, 
+      "screen-dimension": "0x0",
+      "window-dimension": "0x0",
+      "network-connection": true
+    }
+
+  ]
+}
