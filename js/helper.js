@@ -9,3 +9,7 @@ export const postData = async(url, data) => {
     return response.json();
 }
 
+export const getData = async(url) => {
+    const response = await fetch(url);
+    return response.json();
+}

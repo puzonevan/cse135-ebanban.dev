@@ -1,15 +1,5 @@
 
-import { postData } from './helper.js';
-// async function postStatic(url, data){
-//     const response = await fetch(url, {
-//         method: "POST", 
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     });
-//     return response.json();
-// }
+import { postData, getData } from './helper.js';
 
 /**
  * Data Collection
@@ -54,6 +44,12 @@ const collectStaticPerformance = () => {
     .then(data => {
         console.log("Success");
         console.log(data)
+    });
+
+    getData("https://ebanban.dev/api/static")
+    .then(data => {
+        console.log("Get Success");
+        console.log(data);
     });
 
 
