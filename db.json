@@ -28,5 +28,25 @@
       "id": 1, 
       "test": true
     }
-  ]
+  ], 
+  "activity": {
+    "mouse": [
+
+    ], 
+    "keyboard": [
+
+    ], 
+    "idle": [
+
+    ], 
+    "user-enter": [
+
+    ], 
+    "user-leave": [
+
+    ], 
+    "user-pages": [
+      
+    ]
+  }
 }
