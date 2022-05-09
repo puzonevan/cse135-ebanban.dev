@@ -1,14 +1,17 @@
 
-const sendData = (link, data) => {
-    fetch(link, {
+
+async function postStatic(url, data){
+    const response = await fetch(url, {
         method: "POST", 
-        headers: { "Content-Type": "application/json" }, 
+        credentials: "include", 
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => console.log("Success"))
-    .catch(error => console.log(error));
+    });
+    return response.json();
 }
+
 /**
  * Data Collection
  */
@@ -37,7 +40,10 @@ const collectStaticPerformance = () => {
     console.log(static);
     console.log(performanceActivity);
 
-    sendData("https://ebanban.dev/api/static", static);
+    postStatic("https://ebanban.dev/api/static", static)
+    .then(data => {
+        console.log(data);
+    });
 
 }
 
