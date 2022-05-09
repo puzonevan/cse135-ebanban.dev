@@ -15,7 +15,7 @@ const collectStaticPerformance = () => {
         "images-enabled": true, 
         "css-enabled": true, 
         "screen-dimension": `${window.screen.width}x${window.screen.height}`,
-        "window-dimension": `${window.screen.width}x${window.screen.height}`,
+        "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
         "network-connection": navigator.connection
     }
 
