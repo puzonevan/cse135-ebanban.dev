@@ -26,17 +26,15 @@ const collectStaticPerformance = () => {
         "total-time": perf[0].connectEnd - perf[0].connectStart
     }
 
-    console.log(staticData);
-    console.log(performanceActivity);
-
-    const intervalID = setInterval(() => {
+    // Request to post data every 10 seconds
+    const intervalStatic = setInterval(() => {
         postData("https://ebanban.dev/api/static", staticData)
         .then(data => {
             console.log("Static and performance data succesfully uploaded");
-            clearInterval(intervalID);
+            clearInterval(intervalStatic);
         })
         .catch(error => {
-            console.log("Server not running - can't static and performance data");
+            console.log("Server not running - can't upload static data");
         });
     }, 10000);
 

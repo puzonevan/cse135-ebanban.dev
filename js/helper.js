@@ -5,8 +5,7 @@ export const postData = async(url, data) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    })
-    .catch(error => {});
+    });
     return response.json();
 }
 
