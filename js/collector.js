@@ -1,8 +1,17 @@
 
+const sendData = (link, data) => {
+    fetch(link, {
+        method: "POST", 
+        headers: { "Content-Type": "application/json" }, 
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => console.log("Success"))
+    .catch(error => console.log(error));
+}
 /**
  * Data Collection
  */
-
 const collectStaticPerformance = () => {
     console.log("Hello World");
 
@@ -27,6 +36,9 @@ const collectStaticPerformance = () => {
 
     console.log(static);
     console.log(performanceActivity);
+
+    sendData("https://ebanban.dev/api/static", static);
+
 }
 
 const activity = {
@@ -41,8 +53,6 @@ const activity = {
 
 }
 
-
-
 window.onload = collectStaticPerformance();
 
 const logMouse = (e) => {
@@ -56,3 +66,4 @@ const logMouse = (e) => {
 }
 
 window.addEventListener("mouseup", logMouse);
+
