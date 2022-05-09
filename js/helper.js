@@ -1,3 +1,3 @@
-const postData = async(url, data) => {
-    
+export const postData = async(url, data) => {
+
 }
