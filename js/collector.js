@@ -43,7 +43,7 @@ const collectStaticPerformance = () => {
     // .then(data => {
     //     console.log(data);
     // });
-    fetch("https://ebanban.dev/api/static")
+    fetch("http://ebanban.dev/api/static")
     .then(response => response.json())
     .then(data => {
         console.log("successful get");
