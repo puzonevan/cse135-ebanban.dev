@@ -1,5 +1,5 @@
 
-import { postData, getData } from './helper.js';
+import { postData, getData, deleteData, postData } from './helper.js';
 
 /**
  * Data Collection
@@ -29,34 +29,41 @@ const collectStaticPerformance = () => {
     console.log(staticData);
     console.log(performanceActivity);
 
-    // postStatic("https://ebanban.dev/api/static", static)
+    const intervalID = setInterval(() => {
+        postData("https://ebanban.dev/api/static", staticData)
+        .then(data => {
+            console.log("Static and performance data succesfully uploaded");
+            clearInterval(intervalID);
+        })
+        .catch(error => {
+            console.log("Server not running - can't static and performance data");
+        });
+    }, 10000);
+
+    // fetch("https://ebanban.dev/api/static/1")
+    // .then(response => response.json())
     // .then(data => {
+    //     console.log(`Success:`);
     //     console.log(data);
     // });
-    fetch("https://ebanban.dev/api/static/1")
-    .then(response => response.json())
-    .then(data => {
-        console.log(`Success:`);
-        console.log(data);
-    });
 
-    postData("https://ebanban.dev/api/static", staticData)
-    .then(data => {
-        console.log("Success");
-        console.log(data)
-    });
+    // postData("https://ebanban.dev/api/static", staticData)
+    // .then(data => {
+    //     console.log("Success");
+    //     console.log(data)
+    // });
 
-    getData("https://ebanban.dev/api/static")
-    .then(data => {
-        console.log("Get Success");
-        console.log(data);
-    });
+    // getData("https://ebanban.dev/api/static")
+    // .then(data => {
+    //     console.log("Get Success");
+    //     console.log(data);
+    // });
 
-    getData("https://ebanban.dev/api/static/1")
-    .then(data => {
-        console.log("Get Success");
-        console.log(data);
-    });
+    // getData("https://ebanban.dev/api/static/1")
+    // .then(data => {
+    //     console.log("Get Success");
+    //     console.log(data);
+    // });
 
 
 }
