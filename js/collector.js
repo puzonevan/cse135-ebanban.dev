@@ -1,5 +1,5 @@
 
-import { postData, getData, deleteData, postData } from './helper.js';
+import { postData, getData, deleteData, putData } from './helper.js';
 
 /**
  * Data Collection
