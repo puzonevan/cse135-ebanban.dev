@@ -1,5 +1,5 @@
 
-
+import { postData } from './helper.js';
 // async function postStatic(url, data){
 //     const response = await fetch(url, {
 //         method: "POST", 
@@ -17,7 +17,7 @@
 const collectStaticPerformance = () => {
     console.log("Hello World");
 
-    let static = {
+    let staticData = {
         "user-agent": navigator.userAgent, 
         "user-language": navigator.language, 
         "cookies-enabled": navigator.cookieEnabled, 
@@ -36,7 +36,7 @@ const collectStaticPerformance = () => {
         "total-time": perf[0].connectEnd - perf[0].connectStart
     }
 
-    console.log(static);
+    console.log(staticData);
     console.log(performanceActivity);
 
     // postStatic("https://ebanban.dev/api/static", static)
