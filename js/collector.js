@@ -3,7 +3,7 @@ import { postData, getData, deleteData, putData } from './helper.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
-collectorHeaders.set("Set-Cookie", "name=evan");
+// collectorHeaders.set("Set-Cookie", "name=evan");
 /**
  * Data Collection
  */
