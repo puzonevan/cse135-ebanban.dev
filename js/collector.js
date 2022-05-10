@@ -1,6 +1,9 @@
 
 import { postData, getData, deleteData, putData } from './helper.js';
 
+let collectorHeaders = new Headers();
+collectorHeaders.set("Content-Type", "text/javascript");
+
 /**
  * Data Collection
  */
