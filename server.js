@@ -1,5 +1,8 @@
-// app.js file
+const { MongoClient } = require('mongodb');
 
+const uri = 'mongodb://localhost:27017';
+
+// app.js file
 var jsonServer = require('json-server');
 
 // Returns an Express server
@@ -10,6 +13,7 @@ server.use(jsonServer.defaults());
 
 // Add custom routes
 // server.get('/custom', function (req, res) { res.json({ msg: 'hello' }) })
+
 
 // Returns an Express router
 var router = jsonServer.router('db.json');
