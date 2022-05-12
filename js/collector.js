@@ -56,8 +56,6 @@ const collectStaticPerformance = async() => {
 
     
 
-    connectDatabase();
-
 }
 
 const activity = {
