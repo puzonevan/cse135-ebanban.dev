@@ -1,9 +1,17 @@
 
 import { postData, getData, deleteData, putData } from './helper.js';
+import { client } from './localmongo.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
-// collectorHeaders.set("Set-Cookie", "name=evan");
+
+async function listDatabases(client){
+    databaselist = await client.db().admin().listDatabases();
+
+    console.log("Databases: ");
+    databaselist.databases.forEach(db => console.log(`- ${db.name}`));
+}
+
 /**
  * Data Collection
  */
@@ -53,30 +61,19 @@ const collectStaticPerformance = () => {
         });
     }, 10000);
 
-    // fetch("https://ebanban.dev/api/static/1")
-    // .then(response => response.json())
-    // .then(data => {
-    //     console.log(`Success:`);
-    //     console.log(data);
-    // });
+    
 
-    // postData("https://ebanban.dev/api/static", staticData)
-    // .then(data => {
-    //     console.log("Success");
-    //     console.log(data)
-    // });
-
-    // getData("https://ebanban.dev/api/static")
-    // .then(data => {
-    //     console.log("Get Success");
-    //     console.log(data);
-    // });
-
-    // getData("https://ebanban.dev/api/static/1")
-    // .then(data => {
-    //     console.log("Get Success");
-    //     console.log(data);
-    // });
+    // local mongo 
+    try{
+        await client.connect();
+        await listDatabases(client);
+    }
+    catch (e){
+        console.error(e);
+    }
+    finally{
+        client.close();
+    }
 
 
 }
