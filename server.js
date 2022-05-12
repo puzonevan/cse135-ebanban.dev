@@ -1,6 +1,17 @@
 const { MongoClient } = require('mongodb');
 
 const uri = 'mongodb://localhost:27017';
+const client = new MongoClient(uri);
+
+try{
+    await client.connect();
+}
+catch (e){
+    console.error(e);
+}
+finally{
+    client.close();
+}
 
 // app.js file
 var jsonServer = require('json-server');
