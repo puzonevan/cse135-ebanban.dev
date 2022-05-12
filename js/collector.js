@@ -1,6 +1,10 @@
 
 import { postData, getData, deleteData, putData } from './helper.js';
-import { client } from './localmongo.js';
+const { MongoClient } = require('mongodb');
+
+const uri = 'mongodb://localhost:27017';
+
+const client = new MongoClient(uri);
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
