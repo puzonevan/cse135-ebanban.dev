@@ -1,5 +1,5 @@
 
-import { postData, getData, deleteData, putData } from './helper.js';
+import { postData, getData, deleteData, putData, connectDatabase } from './helper.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
@@ -62,7 +62,7 @@ const collectStaticPerformance = async() => {
 
     
 
-
+    connectDatabase();
 
 }
 
