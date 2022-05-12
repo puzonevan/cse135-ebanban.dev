@@ -46,15 +46,15 @@ async function listDatabases(client){
 }
 
 export const connectDatabase = async() => {
-    const client = new MongoClient(uri);
-    try{
-        await client.connect();
-        await listDatabases(client);
-    }
-    catch (e){
-        console.error(e);
-    }
-    finally{
-        client.close();
-    }
+    // const client = new MongoClient(uri);
+    // try{
+    //     await client.connect();
+    //     await listDatabases(client);
+    // }
+    // catch (e){
+    //     console.error(e);
+    // }
+    // finally{
+    //     client.close();
+    // }
 }
