@@ -1,15 +1,9 @@
 
-import { postData, getData, deleteData, putData, connectDatabase } from './helper.js';
+import { postData, getData, deleteData, putData } from './helper.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
-async function listDatabases(client){
-    databaselist = await client.db().admin().listDatabases();
-
-    console.log("Databases: ");
-    databaselist.databases.forEach(db => console.log(`- ${db.name}`));
-}
 
 /**
  * Data Collection
