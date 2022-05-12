@@ -1,10 +1,5 @@
 
 import { postData, getData, deleteData, putData } from './helper.js';
-const { MongoClient } = require('mongodb');
-
-const uri = 'mongodb://localhost:27017';
-
-const client = new MongoClient(uri);
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
@@ -67,17 +62,6 @@ const collectStaticPerformance = async() => {
 
     
 
-    // local mongo 
-    try{
-        await client.connect();
-        await listDatabases(client);
-    }
-    catch (e){
-        console.error(e);
-    }
-    finally{
-        client.close();
-    }
 
 
 }
