@@ -15,7 +15,7 @@ async function listDatabases(client){
 /**
  * Data Collection
  */
-const collectStaticPerformance = () => {
+const collectStaticPerformance = async() => {
     console.log("Hello World");
 
     let staticData = {
