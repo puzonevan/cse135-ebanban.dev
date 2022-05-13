@@ -83,10 +83,8 @@ window.addEventListener("load", () => {
     console.log(`User Entered: ${enter}`);
 });
 
-window.addEventListener("unload", (e) => {
+window.addEventListener('beforeunload', (e) =>{
     e.preventDefault();
-    const leave = new Date.toString();
-    console.log(`User Leave: ${leave}`);
-    alert("okay bye");
-})
+    e.returnValue = '';
+});
 
