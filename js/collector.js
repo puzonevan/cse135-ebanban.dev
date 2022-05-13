@@ -9,7 +9,7 @@ let cookies = new Map(
 )
 
 console.log(cookies);
-console.log(Object.keys(cookies));
+console.log(cookies.keys);
 
 /**
  * Data Collection
