@@ -16,7 +16,7 @@ const collectStaticPerformance = async() => {
         "user-language": navigator.language, 
         "cookies-enabled": navigator.cookieEnabled, 
         "javascript-enabled": true, 
-        "images-enabled": checkImages(), 
+        "images-enabled": false, 
         "css-enabled": checkCSS(), 
         "screen-dimension": `${window.screen.width}x${window.screen.height}`,
         "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
@@ -32,6 +32,8 @@ const collectStaticPerformance = async() => {
 
     console.log(staticData);
     console.log(performanceActivity);
+    checkImages(staticData);
+
 
     // Request to post data every 10 seconds
     // const intervalStatic = setInterval(() => {

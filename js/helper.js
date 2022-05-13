@@ -45,22 +45,23 @@ export const checkCSS = () => {
         return true;
     }
     else{
+        document.body.removeChild(document.getElementById("test"));
         return false;
     }
 }
 
-export const checkImages = () => {
+export const checkImages = (data) => {
     const image = document.createElement("img");
     image.setAttribute("src", "../hw3/images/postman.png");
-    // image.setAttribute("hidden", "true");
+    image.setAttribute("hidden", "true");
     image.setAttribute("id", "image-test");
+    image.addEventListener("load", () => {
+        if(!image.complete && image.naturalHeight === 0){
+            data['images-enabled'] = false;
+        }else{
+            data['images-enabled'] = true;
+        }
+    })
     document.body.appendChild(image);
 
-    if(document.getElementById("image-test").complete && document.getElementById("image-test").naturalHeight !== 0){
-        document.body.removeChild(document.getElementById("image-test"));
-        return true;
-    }
-    else{
-        return false;
-    }
 }
