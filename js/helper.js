@@ -33,3 +33,9 @@ export const putData = async(url, data) =>{
 }
 
 
+export const checkCSS = () => {
+    const div = document.createElement("div");
+    div.setAttribute("hidden", "true");
+    document.body.appendChild(div);
+}
+

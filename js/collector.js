@@ -1,5 +1,5 @@
 
-import { postData, getData, deleteData, putData } from './helper.js';
+import { postData, getData, deleteData, putData, checkCSS } from './helper.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
@@ -31,7 +31,8 @@ const collectStaticPerformance = async() => {
     }
 
     console.log(staticData);
-    console.log(performanceActivity)
+    console.log(performanceActivity);
+    checkCSS();
 
     // Request to post data every 10 seconds
     // const intervalStatic = setInterval(() => {
