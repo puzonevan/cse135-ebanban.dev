@@ -16,7 +16,7 @@ const collectStaticPerformance = async() => {
         "user-language": navigator.language, 
         "cookies-enabled": navigator.cookieEnabled, 
         "javascript-enabled": true, 
-        "images-enabled": true, 
+        "images-enabled": checkImages(), 
         "css-enabled": checkCSS(), 
         "screen-dimension": `${window.screen.width}x${window.screen.height}`,
         "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
@@ -57,7 +57,6 @@ const collectStaticPerformance = async() => {
     //     });
     // }, 10000);
 
-    checkImages();
 
 }
 
