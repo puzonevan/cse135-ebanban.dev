@@ -97,7 +97,7 @@ window.addEventListener("load", () => {
     const idleInterval = setInterval(() => {
         idle += 1;
 
-        if(idleTime > 2){
+        if(idle > 2){
             console.log(moveevent);
             console.log(scrollevent);
         }
