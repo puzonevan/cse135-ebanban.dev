@@ -52,5 +52,15 @@ export const checkCSS = () => {
 export const checkImages = () => {
     const image = document.createElement("img");
     image.setAttribute("src", "../hw3/images/postman.png");
+    image.setAttribute("hidden", "true");
+    image.setAttribute("id", "image-test");
     document.body.appendChild(image);
+
+    if(document.getElementById("image-test").complete && document.getElementById("image-test").naturalHeight !== 0){
+        document.body.removeChild(document.getElementById("image-test"));
+        return true;
+    }
+    else{
+        return false;
+    }
 }
