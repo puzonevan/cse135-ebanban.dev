@@ -8,6 +8,7 @@ let cookies = new Map(
     document.cookie.split(' ').map(cookie => [cookie.split("=")[0], cookie.split("=")[1]])
 )
 
+console.log(cookies);
 console.log(Object.keys(cookies).includes("session"));
 
 /**
