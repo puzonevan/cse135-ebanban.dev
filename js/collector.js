@@ -91,3 +91,6 @@ window.addEventListener('beforeunload', (e) =>{
     console.log(`User Leaves: ${leave}`);
 });
 
+window.addEventListener('mousemove', (e) =>{
+    console.log(`(${e.clientX}, ${e.clientY})`);
+})
