@@ -64,6 +64,8 @@ const collectStaticPerformance = async() => {
 }
 
 let idle = 0;
+let moveidle = 0;
+let scrollidle = 0;
 let moveevent = {
     "type": "move", 
     "x": 0, 
@@ -96,10 +98,18 @@ window.addEventListener("load", () => {
     // Checking every second
     const idleInterval = setInterval(() => {
         idle += 1;
+        moveidle += 1;
+        scrollidle += 1;
 
-        if(idle > 2){
-            // console.log(moveevent);
-            // console.log(scrollevent);
+        if(moveidle > 2){
+            // Post mouse event 
+            
+            moveidle = 0;
+        }
+        if(scrollidle > 2){
+            // Post scroll event
+
+            scrollidle = 0;
         }
     }, 1000);
 
@@ -117,6 +127,7 @@ window.addEventListener('mousemove', (e) =>{
 
     // Idle time 0 because user activity 
     idle = 0;
+    moveidle = 0;
 
     // Update object
     moveevent.x = e.clientX;
@@ -138,6 +149,7 @@ window.addEventListener('scroll', (e) => {
 
     // Idle time 0 because user activity 
     idle = 0;
+    scrollidle = 0;
 
     // Update object
     scrollevent.x = window.scrollX;
