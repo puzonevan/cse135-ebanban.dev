@@ -4,6 +4,7 @@ import { postData, getData, deleteData, putData, checkCSS, checkImages } from '.
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
+console.log(document.cookie);
 
 /**
  * Data Collection
