@@ -83,7 +83,7 @@ window.addEventListener("load", () => {
     console.log(`User Entered: ${enter}`);
 });
 
-window.addEventListener("beforeunload", () => {
+window.addEventListener("unload", () => {
 
     const leave = new Date.toString();
     console.log(`User Leave: ${leave}`);
