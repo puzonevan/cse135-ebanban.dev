@@ -44,5 +44,13 @@ export const checkCSS = () => {
         document.body.removeChild(document.getElementById("test"));
         return true;
     }
+    else{
+        return false;
+    }
 }
 
+export const checkImages = () => {
+    const image = document.createElement("img");
+    image.setAttribute("src", "../hw3/images/postman.png");
+    document.body.appendChild(image);
+}

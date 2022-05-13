@@ -1,5 +1,5 @@
 
-import { postData, getData, deleteData, putData, checkCSS } from './helper.js';
+import { postData, getData, deleteData, putData, checkCSS, checkImages } from './helper.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
@@ -57,7 +57,7 @@ const collectStaticPerformance = async() => {
     //     });
     // }, 10000);
 
-    
+    checkImages();
 
 }
 
