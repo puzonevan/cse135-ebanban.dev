@@ -63,20 +63,9 @@ const collectStaticPerformance = async() => {
 
 }
 
-const activity = {
-    "mouse": [
-
-    ], 
-    "keyboard": [
-
-    ], 
-    "pages": [
-
-    ]
-}
-
 window.onload = collectStaticPerformance();
 
+// User enters page
 window.addEventListener("load", () => {
     collectStaticPerformance();
     const enter = new Date().toString();
@@ -85,12 +74,20 @@ window.addEventListener("load", () => {
     console.log(`Page: ${page}`);
 });
 
+// User leaves page
 window.addEventListener('beforeunload', (e) =>{
     e.preventDefault();
     const leave = new Date().toString();
     console.log(`User Leaves: ${leave}`);
 });
 
+
+// 
 window.addEventListener('mousemove', (e) =>{
-    console.log(`(${e.clientX}, ${e.clientY})`);
+    // console.log(`(${e.clientX}, ${e.clientY})`);
+
+});
+
+window.addEventListener('click', (e) => {
+    console.log(e.button);
 })
