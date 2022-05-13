@@ -4,7 +4,10 @@ import { postData, getData, deleteData, putData, checkCSS, checkImages } from '.
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
-console.log(document.cookie.split(' '));
+let cookies = new Map(
+    document.cookie.split(' ').map(cookie => [cookie.split("=")[0], cookie.split("=")[1]])
+)
+
 
 /**
  * Data Collection
