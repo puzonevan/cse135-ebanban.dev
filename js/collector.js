@@ -98,8 +98,8 @@ window.addEventListener("load", () => {
         idle += 1;
 
         if(idle > 2){
-            console.log(moveevent);
-            console.log(scrollevent);
+            // console.log(moveevent);
+            // console.log(scrollevent);
         }
     }, 1000);
 
