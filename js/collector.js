@@ -81,6 +81,13 @@ let scrollevent = {
     "y": 0
 };
 
+let pageinfo = {
+    "enter": 0, 
+    "leave": 0, 
+    "page": "",
+}
+
+
 // User enters page
 window.addEventListener("load", () => {
     // Collect static and performance data 
@@ -88,11 +95,13 @@ window.addEventListener("load", () => {
 
     // Collect date user entered
     const enter = new Date().toString();
-    console.log(`User Entered: ${enter}`);
+    // console.log(`User Entered: ${enter}`);
+    pageinfo.enter = enter;
 
     // Collect page user is on 
-    const page = document.getElementsByTagName("title")[0].innerHTML;
-    console.log(`Page: ${page}`);
+    const currentpage = document.getElementsByTagName("title")[0].innerHTML;
+    // console.log(`Page: ${page}`);
+    pageinfo.page = currentpage 
 
     // Interval for checking idle time, move event, and scroll event
     // Checking every second
@@ -119,7 +128,8 @@ window.addEventListener("load", () => {
 window.addEventListener('beforeunload', (e) =>{
     e.preventDefault();
     const leave = new Date().toString();
-    console.log(`User Leaves: ${leave}`);
+    // console.log(`User Leaves: ${leave}`);
+    pageinfo.leave = leave;
 });
 
 window.addEventListener('mousemove', (e) =>{
