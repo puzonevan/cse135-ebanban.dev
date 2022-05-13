@@ -95,7 +95,7 @@ window.addEventListener("load", () => {
     // Interval for checking idle time, move event, and scroll event
     // Checking every second
     const idleInterval = setInterval(() => {
-        idleTime += 1;
+        idle += 1;
 
         if(idleTime > 2){
             console.log(moveevent);
