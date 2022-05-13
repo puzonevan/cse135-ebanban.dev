@@ -90,4 +90,8 @@ window.addEventListener('mousemove', (e) =>{
 
 window.addEventListener('click', (e) => {
     console.log(e.button);
+});
+
+window.addEventListener('scroll', (e) => {
+    console.log(`X: ${window.scrollX} Y: ${window.scrollY}`);
 })
