@@ -64,28 +64,27 @@ const collectStaticPerformance = async() => {
 }
 
 const activity = {
-    "mouse-cursor": [], 
-    "mouse-clicks": [], 
-    "mouse-scrolls": [], 
-    "keyboard-events": [], 
-    "idle-events": [], 
-    "user-entered": {}, 
-    "user-left": {}, 
-    "user-page": "", 
+    "mouse": [
 
+    ], 
+    "keyboard": [
+
+    ], 
+    "pages": [
+
+    ]
 }
 
 window.onload = collectStaticPerformance();
 
-const logMouse = (e) => {
-    const mouseClick = {
-        "x": e.clientX, 
-        "y": e.clientY, 
-        "button": e.button
-    }
-    activity["mouse-clicks"].push(mouseClick);
-    console.log(activity);
-}
+window.addEventListener("load", () => {
+    collectStaticPerformance();
+    const enter = new Date().toString();
+    console.log(`User Entered: ${enter}`);
+});
 
-window.addEventListener("mouseup", logMouse);
+window.addEventListener("beforeunload", () => {
+    const leave = new Date.toString();
+    console.log(`User Leave: ${leave}`);
+})
 
