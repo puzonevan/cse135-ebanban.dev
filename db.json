@@ -12,15 +12,7 @@
   "static": [
     {
       "id": 1,
-      "user-agent": "nice", 
-      "user-language": "en", 
-      "cookies-enabled": true, 
-      "javascript-enabled": true, 
-      "images-enabled": true, 
-      "css-enabled": true, 
-      "screen-dimension": "0x0",
-      "window-dimension": "0x0",
-      "network-connection": true
+      "test": true
     }
   ],
   "performance": [
@@ -29,24 +21,19 @@
       "test": true
     }
   ], 
-  "activity": {
-    "mouse": [
+  "activity": [
+    {
+      "id": 1, 
+      "mouse": [
 
-    ], 
-    "keyboard": [
-
-    ], 
-    "idle": [
-
-    ], 
-    "user-enter": [
-
-    ], 
-    "user-leave": [
-
-    ], 
-    "user-pages": [
-      
-    ]
-  }
+      ], 
+      "keyboard": [
+        
+      ], 
+      "pages": [
+        
+      ]
+    }
+  ]
+  
 }

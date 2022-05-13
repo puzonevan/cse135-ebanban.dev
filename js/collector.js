@@ -27,12 +27,13 @@ const collectStaticPerformance = async() => {
 
     let performanceActivity = {
         "load-time": perf[0].toJSON(), 
+        "start": perf[0].connectStart, 
+        "end": perf[0].connectEnd, 
         "total-time": perf[0].connectEnd - perf[0].connectStart
     }
 
     console.log(staticData);
     console.log(performanceActivity);
-    checkImages(staticData);
 
 
     // Request to post data every 10 seconds
