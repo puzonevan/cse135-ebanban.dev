@@ -52,7 +52,7 @@ export const checkCSS = () => {
 export const checkImages = () => {
     const image = document.createElement("img");
     image.setAttribute("src", "../hw3/images/postman.png");
-    image.setAttribute("hidden", "true");
+    // image.setAttribute("hidden", "true");
     image.setAttribute("id", "image-test");
     document.body.appendChild(image);
 
