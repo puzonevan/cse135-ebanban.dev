@@ -85,6 +85,8 @@ window.addEventListener("load", () => {
 
 window.addEventListener('beforeunload', (e) =>{
     e.preventDefault();
+    const leave = new Date().toString();
+    console.log(`User Leaves: ${leave}`);
     e.returnValue = '';
 });
 
