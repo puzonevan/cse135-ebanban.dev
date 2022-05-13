@@ -81,6 +81,8 @@ window.addEventListener("load", () => {
     collectStaticPerformance();
     const enter = new Date().toString();
     console.log(`User Entered: ${enter}`);
+    const page = document.getElementsByTagName("title")[0].innerHTML;
+    console.log(`Page: ${page}`);
 });
 
 window.addEventListener('beforeunload', (e) =>{
