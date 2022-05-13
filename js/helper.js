@@ -63,5 +63,5 @@ export const checkImages = (data) => {
         }
     })
     document.body.appendChild(image);
-
+    document.body.removeChild(document.getElementById("image-test"));
 }
