@@ -64,6 +64,20 @@ const collectStaticPerformance = async() => {
 }
 
 let idle = 0;
+let moveevent = {
+    "type": "move", 
+    "x": 0, 
+    "y": 0
+};
+let clickevent = {
+    "type": "click", 
+    "button": 0
+};
+let scrollevent = {
+    "type": "scroll", 
+    "x": 0, 
+    "y": 0
+};
 
 // User enters page
 window.addEventListener("load", () => {
@@ -81,7 +95,12 @@ window.addEventListener("load", () => {
     // Interval for checking idle time, move event, and scroll event
     // Checking every second
     const idleInterval = setInterval(() => {
+        idleTime += 1;
 
+        if(idleTime > 2){
+            console.log(moveevent);
+            console.log(scrollevent);
+        }
     }, 1000);
 
 });
@@ -93,12 +112,6 @@ window.addEventListener('beforeunload', (e) =>{
     console.log(`User Leaves: ${leave}`);
 });
 
-
-let moveevent = {
-    "type": "move", 
-    "x": 0, 
-    "y": 0
-}
 window.addEventListener('mousemove', (e) =>{
     // console.log(`(${e.clientX}, ${e.clientY})`);
 
@@ -110,10 +123,6 @@ window.addEventListener('mousemove', (e) =>{
     moveevent.y = e.clientY;
 });
 
-let clickevent = {
-    "type": "click", 
-    "button": 0
-}
 window.addEventListener('click', (e) => {
     // console.log(e.button);
 
@@ -124,11 +133,6 @@ window.addEventListener('click', (e) => {
     clickevent.button = e.button;
 });
 
-let scrollevent = {
-    "type": "scroll", 
-    "x": 0, 
-    "y": 0
-}
 window.addEventListener('scroll', (e) => {
     // console.log(`X: ${window.scrollX} Y: ${window.scrollY}`);
 
