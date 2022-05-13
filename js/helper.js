@@ -36,8 +36,13 @@ export const putData = async(url, data) =>{
 export const checkCSS = () => {
     const div = document.createElement("div");
     div.setAttribute("hidden", "true");
+    div.setAttribute("id", "test");
     div.style.width = "10px";
     document.body.appendChild(div);
 
+    if(document.getElementById("test").style.width == "10px"){
+        document.body.removeChild(document.getElementById("test"));
+        return true;
+    }
 }
 
