@@ -111,6 +111,7 @@ window.addEventListener("load", async() => {
 
     await retrieveCookie();
 
+    console.log(sessionid);
     // Collect static and performance data 
     collectStaticPerformance();
 
