@@ -109,7 +109,7 @@ let pageinfo = {
 // User enters page
 window.addEventListener("load", () => {
 
-    retrieveCookie();
+    await retrieveCookie();
 
     // Collect static and performance data 
     collectStaticPerformance();
