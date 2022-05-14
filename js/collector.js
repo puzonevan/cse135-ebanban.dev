@@ -12,6 +12,7 @@ collectorHeaders.set("Content-Type", "application/javascript");
  * Cookie Fetching/Creation
  */
 const retrieveCookie = () => {
+    console.log(checkSesssion());
     if(checkSession()){
         return getSession();
     }else{
