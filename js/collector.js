@@ -99,7 +99,8 @@ window.addEventListener("load", () => {
         getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = data.length;
-        });
+        })
+        .then(() => console.log(sessionid));
     }
     console.log(sessionid);
 
