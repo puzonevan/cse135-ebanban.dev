@@ -8,15 +8,19 @@ collectorHeaders.set("Content-Type", "application/javascript");
 
 let sessionid = "-1";
 // Check for cookies 
-if(checkSession()){
-    sessionid = getSession();
-}else{
-    getData("https://ebanban.dev/api/static")
-    .then(data => {
-        sessionid = data.length.toString();
-    })
-    .then(() => console.log(sessionid));
+const retrieveCookie = async() => {
+    if(checkSession()){
+        sessionid = getSession();
+    }else{
+        await getData("https://ebanban.dev/api/static")
+        .then(data => {
+            sessionid = data.length.toString();
+        })
+        .then(() => console.log(sessionid));
+    }
 }
+
+
 
 /**
  * Data Collection
@@ -104,6 +108,8 @@ let pageinfo = {
 
 // User enters page
 window.addEventListener("load", () => {
+
+    retrieveCookie();
 
     // Collect static and performance data 
     collectStaticPerformance();
