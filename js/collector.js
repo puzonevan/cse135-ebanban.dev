@@ -5,13 +5,20 @@ import { getSession, checkSession } from './session.js';
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
-getData("https://ebanban.dev/api/static")
-.then(data => console.log(length(data)))
-.catch(e => console.log("error"));
 
 
-if(checkSession()){
-    getSession()
+
+/**
+ * Cookie Fetching/Creation
+ */
+const retrieveCookie = async() => {
+    if(checkSession()){
+        return getSession();
+    }else{
+        getData("https://ebanban.dev/api/static")
+        .then(data => {return data.length})
+        .catch(e => console.log(e));
+    }
 }
 
 /**
@@ -99,6 +106,11 @@ let pageinfo = {
 
 // User enters page
 window.addEventListener("load", () => {
+
+    // Check for cookies 
+    const cookieid = retrieveCookie();
+    console.log(cookieid);
+
     // Collect static and performance data 
     collectStaticPerformance();
 
