@@ -11,13 +11,12 @@ collectorHeaders.set("Content-Type", "application/javascript");
 /**
  * Cookie Fetching/Creation
  */
-const retrieveCookie = () => {
+const retrieveCookie = async() => {
     if(checkSession()){
         return getSession();
     }else{
-        let sessionid = -1;
-        getData("https://ebanban.dev/api/static")
-        .then(data => console.log(data.length))
+        let sessionid = await getData("https://ebanban.dev/api/static")
+        .then(data => data)
         .catch(e => console.log(e));
 
         return sessionid;
