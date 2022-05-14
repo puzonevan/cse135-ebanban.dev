@@ -11,11 +11,11 @@ collectorHeaders.set("Content-Type", "application/javascript");
 /**
  * Cookie Fetching/Creation
  */
-const retrieveCookie = () => {
+const retrieveCookie = async() => {
     if(checkSession()){
         return getSession();
     }else{
-        let sessionid = getDataLength("https://ebanban.dev/api/static");
+        let sessionid = await getDataLength("https://ebanban.dev/api/static");
         return sessionid;
     }
 }
