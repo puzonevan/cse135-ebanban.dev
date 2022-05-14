@@ -5,6 +5,19 @@ import { getSession, checkSession } from './session.js';
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
+
+let sessionid = "-1";
+// Check for cookies 
+if(checkSession()){
+    sessionid = getSession();
+}else{
+    getData("https://ebanban.dev/api/static")
+    .then(data => {
+        sessionid = data.length.toString();
+    })
+    .then(() => console.log(sessionid));
+}
+
 /**
  * Data Collection
  */
@@ -63,7 +76,6 @@ const collectStaticPerformance = async() => {
 
 }
 
-let sessionid = "-1";
 let idle = 0;
 let moveidle = 0;
 let scrollidle = 0;
@@ -91,18 +103,6 @@ let pageinfo = {
 
 // User enters page
 window.addEventListener("load", () => {
-
-    // Check for cookies 
-    if(checkSession()){
-        sessionid = getSession();
-    }else{
-        getData("https://ebanban.dev/api/static")
-        .then(data => {
-            sessionid = data.length;
-        })
-        .then(() => console.log(sessionid));
-    }
-    console.log(sessionid);
 
     // Collect static and performance data 
     collectStaticPerformance();
@@ -156,7 +156,6 @@ window.addEventListener('mousemove', (e) =>{
     // Update object
     moveevent.x = e.clientX;
     moveevent.y = e.clientY;
-    console.log(sessionid)
 });
 
 window.addEventListener('click', (e) => {
