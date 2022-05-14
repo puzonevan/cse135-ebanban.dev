@@ -12,11 +12,15 @@ const retrieveCookie = async() => {
     if(checkSession()){
         sessionid = getSession();
     }else{
-        await getData("https://ebanban.dev/api/static")
-        .then(data => {
-            sessionid = data.length.toString();
-        })
-        .catch(e => console.log("Server Down"));
+        const sessionInterval = setInterval(() => {
+            await getData("https://ebanban.dev/api/static")
+            .then(data => {
+                sessionid = data.length.toString();
+                clearInterval(sessionInterval);
+            })
+            .catch(e => console.log("Server Down"));
+        }, 2000);
+        
     }
 }
 
@@ -26,7 +30,6 @@ const retrieveCookie = async() => {
  * Data Collection
  */
 const collectStaticPerformance = async() => {
-    console.log("Hello World");
 
     let staticData = {
         "id": sessionid,
@@ -44,6 +47,7 @@ const collectStaticPerformance = async() => {
     const perf = performance.getEntriesByType("navigation");
 
     let performanceActivity = {
+        "id": sessionid, 
         "load-time": perf[0].toJSON(), 
         "start": perf[0].connectStart, 
         "end": perf[0].connectEnd, 
