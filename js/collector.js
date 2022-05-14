@@ -12,15 +12,11 @@ const retrieveCookie = async() => {
     if(checkSession()){
         sessionid = getSession();
     }else{
-        const sessionInterval = setInterval(() => {
-            await getData("https://ebanban.dev/api/static")
-            .then(data => {
-                sessionid = data.length.toString();
-                clearInterval(sessionInterval);
-            })
-            .catch(e => console.log("Server Down"));
-        }, 2000);
-        
+        await getData("https://ebanban.dev/api/static")
+        .then(data => {
+            sessionid = (data.length + 1).toString();
+        })
+        .catch(e => console.log("Server Down"));
     }
 }
 
@@ -47,7 +43,6 @@ const collectStaticPerformance = async() => {
     const perf = performance.getEntriesByType("navigation");
 
     let performanceActivity = {
-        "id": sessionid, 
         "load-time": perf[0].toJSON(), 
         "start": perf[0].connectStart, 
         "end": perf[0].connectEnd, 
@@ -59,16 +54,18 @@ const collectStaticPerformance = async() => {
 
 
     // Request to post data every 10 seconds
-    // const intervalStatic = setInterval(() => {
-    //     postData("https://ebanban.dev/api/static", staticData)
-    //     .then(data => {
-    //         console.log("Static data succesfully uploaded");
-    //         clearInterval(intervalStatic);
-    //     })
-    //     .catch(error => {
-    //         console.log("Server not running - can't upload static data");
-    //     });
-    // }, 10000);
+    const intervalStatic = setInterval(() => {
+        staticData.id = sessionid;
+        console.log(staticData);
+        postData("https://ebanban.dev/api/static", staticData)
+        .then(data => {
+            console.log("Static data succesfully uploaded");
+            clearInterval(intervalStatic);
+        })
+        .catch(error => {
+            console.log("Server not running - can't upload static data");
+        });
+    }, 10000);
 
     // // Request to post data every 10 seconds
     // const intervalPerf = setInterval(() => {
