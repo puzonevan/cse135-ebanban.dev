@@ -16,7 +16,7 @@ const retrieveCookie = () => {
         return getSession();
     }else{
         getData("https://ebanban.dev/api/static")
-        .then(data => console.log(data))
+        .then(data => {return data.length})
         .catch(e => console.log(e));
 
     }
