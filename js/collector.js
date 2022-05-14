@@ -12,13 +12,15 @@ collectorHeaders.set("Content-Type", "application/javascript");
  * Cookie Fetching/Creation
  */
 const retrieveCookie = () => {
-    console.log(checkSession());
     if(checkSession()){
         return getSession();
     }else{
+        let sessionid = -1
         getData("https://ebanban.dev/api/static")
-        .then(data => {return data.length})
+        .then(data => sessionid = data.length)
         .catch(e => console.log(e));
+
+        return sessionid;
     }
 }
 
