@@ -107,6 +107,7 @@ window.addEventListener("load", () => {
     // Collect static and performance data 
     collectStaticPerformance();
 
+    console.log(sessionid);
     // Collect date user entered
     const enter = new Date().toString();
     // console.log(`User Entered: ${enter}`);
