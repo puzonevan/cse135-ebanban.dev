@@ -1,5 +1,5 @@
 
-import { postData, getData, deleteData, putData, checkCSS, checkImages } from './helper.js';
+import { postData, getData, getDataLength,  deleteData, putData, checkCSS, checkImages } from './helper.js';
 import { getSession, checkSession } from './session.js';
 
 let collectorHeaders = new Headers();
@@ -11,13 +11,12 @@ collectorHeaders.set("Content-Type", "application/javascript");
 /**
  * Cookie Fetching/Creation
  */
-const retrieveCookie = async() => {
+const retrieveCookie = () => {
     if(checkSession()){
         return getSession();
     }else{
-        let sessionid = await getData("https://ebanban.dev/api/static")
-
-        return sessionid.length;
+        let sessionid = getDataLength("https://ebanban.dev/api/static");
+        return sessionid;
     }
 }
 

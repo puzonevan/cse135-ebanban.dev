@@ -13,6 +13,10 @@ export const getData = async(url) => {
     const response = await fetch(url);
     return response.json();
 }
+export const getDataLength = async(url) => {
+    const response = await fetch(url);
+    return response.json().length;
+}
 
 export const deleteData = async(url) => {
     const response = await fetch(url, {
