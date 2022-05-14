@@ -11,7 +11,7 @@ collectorHeaders.set("Content-Type", "application/javascript");
 /**
  * Cookie Fetching/Creation
  */
-const retrieveCookie = async() => {
+const retrieveCookie = () => {
     if(checkSession()){
         return getSession();
     }else{
