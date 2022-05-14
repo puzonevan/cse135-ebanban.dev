@@ -5,25 +5,6 @@ import { getSession, checkSession } from './session.js';
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
-
-
-
-/**
- * Cookie Fetching/Creation
- */
-const retrieveCookie = async() => {
-    if(checkSession()){
-        return getSession();
-    }else{
-        let sessionid = -1;
-        await getData("https://ebanban.dev/api/static")
-        .then(data => {sessionid = data.length})
-        .catch(e => console.log(e));
-
-        return sessionid;
-    }
-}
-
 /**
  * Data Collection
  */
@@ -111,8 +92,13 @@ let pageinfo = {
 window.addEventListener("load", () => {
 
     // Check for cookies 
-    const cookieid = retrieveCookie();
-    console.log(cookieid);
+    let sessionid = "-1";
+    if(checkSession()){
+        sessionid = getSession();
+    }else{
+        sessionid = getData("https://ebanban.dev/api/static").then(data => data.length);
+    }
+    console.log(sessionid);
 
     // Collect static and performance data 
     collectStaticPerformance();
