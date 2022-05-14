@@ -16,10 +16,8 @@ const retrieveCookie = async() => {
         return getSession();
     }else{
         let sessionid = await getData("https://ebanban.dev/api/static")
-        .then(data => {sessionid = data.length})
-        .catch(e => console.log(e));
 
-        return sessionid.resolve();
+        return sessionid.length;
     }
 }
 
