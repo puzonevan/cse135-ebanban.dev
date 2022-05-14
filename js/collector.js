@@ -1,15 +1,18 @@
 
 import { postData, getData, deleteData, putData, checkCSS, checkImages } from './helper.js';
+import { getSession, checkSession } from './session.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
-let cookies = new Map(
-    document.cookie.split(' ').map(cookie => [cookie.split("=")[0], cookie.split("=")[1]])
-)
+getData("https://ebanban.dev/api/static")
+.then(data => console.log(length(data)))
+.catch(e => console.log("error"));
 
-console.log(cookies);
-console.log([...cookies.keys()].includes("_ga"));
+
+if(checkSession()){
+    getSession()
+}
 
 /**
  * Data Collection
