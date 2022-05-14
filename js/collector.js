@@ -12,7 +12,7 @@ const retrieveCookie = async() => {
     if(checkSession()){
         sessionid = getSession();
     }else{
-        getData("https://ebanban.dev/api/static")
+        await getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = data.length.toString();
         })
