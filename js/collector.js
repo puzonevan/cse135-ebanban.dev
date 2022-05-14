@@ -20,7 +20,7 @@ const retrieveCookie = async() => {
         .then(data => {sessionid = data.length})
         .catch(e => console.log(e));
 
-        return sessionid;
+        return sessionid.resolve();
     }
 }
 
