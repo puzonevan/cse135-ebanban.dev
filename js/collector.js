@@ -96,7 +96,10 @@ window.addEventListener("load", () => {
     if(checkSession()){
         sessionid = getSession();
     }else{
-        sessionid = getData("https://ebanban.dev/api/static").then(data => data.length);
+        getData("https://ebanban.dev/api/static")
+        .then(data => {
+            sessionid = data.length;
+        });
     }
     console.log(sessionid);
 
