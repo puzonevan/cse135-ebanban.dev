@@ -16,7 +16,7 @@ const retrieveCookie = async() => {
         .then(data => {
             sessionid = data.length.toString();
         })
-        .then(() => console.log(sessionid));
+        .catch(e => console.log("Server Down"));
     }
 }
 
