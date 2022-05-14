@@ -25,6 +25,7 @@ const collectStaticPerformance = async() => {
     console.log("Hello World");
 
     let staticData = {
+        "id": sessionid,
         "user-agent": navigator.userAgent, 
         "user-language": navigator.language, 
         "cookies-enabled": navigator.cookieEnabled, 
