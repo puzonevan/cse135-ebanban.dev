@@ -12,7 +12,7 @@ const retrieveCookie = async() => {
     if(checkSession()){
         sessionid = getSession();
     }else{
-        await getData("https://ebanban.dev/api/static")
+        getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = data.length.toString();
         })
@@ -107,7 +107,7 @@ let pageinfo = {
 
 
 // User enters page
-window.addEventListener("load", () => {
+window.addEventListener("load", async() => {
 
     await retrieveCookie();
 
