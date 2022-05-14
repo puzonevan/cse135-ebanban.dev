@@ -63,6 +63,7 @@ const collectStaticPerformance = async() => {
 
 }
 
+let sessionid = "-1";
 let idle = 0;
 let moveidle = 0;
 let scrollidle = 0;
@@ -92,7 +93,6 @@ let pageinfo = {
 window.addEventListener("load", () => {
 
     // Check for cookies 
-    let sessionid = "-1";
     if(checkSession()){
         sessionid = getSession();
     }else{
@@ -107,7 +107,6 @@ window.addEventListener("load", () => {
     // Collect static and performance data 
     collectStaticPerformance();
 
-    console.log(sessionid);
     // Collect date user entered
     const enter = new Date().toString();
     // console.log(`User Entered: ${enter}`);
@@ -157,6 +156,7 @@ window.addEventListener('mousemove', (e) =>{
     // Update object
     moveevent.x = e.clientX;
     moveevent.y = e.clientY;
+    console.log(sessionid)
 });
 
 window.addEventListener('click', (e) => {
