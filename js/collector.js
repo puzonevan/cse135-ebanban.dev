@@ -32,7 +32,7 @@ const retrieveCookie = async() => {
 const collectStaticPerformance = async() => {
 
     let staticData = {
-        "id": sessionid,
+        "sessionid": sessionid,
         "user-agent": navigator.userAgent, 
         "user-language": navigator.language, 
         "cookies-enabled": navigator.cookieEnabled, 
@@ -56,17 +56,17 @@ const collectStaticPerformance = async() => {
 
     // Request to post data every 10 seconds
     const intervalStatic = setInterval(() => {
-        staticData.id = sessionid;
-        if(checkSession()){
-            putData(`https://ebanban.dev/api/static/${sessionid}`, staticData)
-            .then(data => {
-                console.log("Static data succesfully uploaded");
-                clearInterval(intervalStatic);
-            })
-            .catch(error => {
-                console.log("Server not running - can't upload static data");
-            });
-        }else{
+        staticData.sessionid = sessionid;
+        // if(checkSession()){
+        //     putData(`https://ebanban.dev/api/static/${sessionid}`, staticData)
+        //     .then(data => {
+        //         console.log("Static data succesfully uploaded");
+        //         clearInterval(intervalStatic);
+        //     })
+        //     .catch(error => {
+        //         console.log("Server not running - can't upload static data");
+        //     });
+        // }else{
             postData("https://ebanban.dev/api/static", staticData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
@@ -75,7 +75,7 @@ const collectStaticPerformance = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload static data");
             });
-        }
+        // }
         
     }, 10000);
 
