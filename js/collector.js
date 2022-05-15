@@ -57,29 +57,56 @@ const collectStaticPerformance = async() => {
     // Request to post data every 10 seconds
     const intervalStatic = setInterval(() => {
         staticData.id = sessionid;
-        postData("https://ebanban.dev/api/static", staticData)
-        .then(data => {
-            console.log("Static data succesfully uploaded");
-            console.log(data);
-            clearInterval(intervalStatic);
-        })
-        .catch(error => {
-            console.log("Server not running - can't upload static data");
-        });
+        if(checkSession()){
+            putData("https://ebanban.dev/api/static", staticData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                console.log(data);
+                clearInterval(intervalStatic);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload static data");
+            });
+        }else{
+            postData("https://ebanban.dev/api/static", staticData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                console.log(data);
+                clearInterval(intervalStatic);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload static data");
+            });
+        }
+        
     }, 10000);
 
     // Request to post data every 10 seconds
     const intervalPerf = setInterval(() => {
         performanceActivity.id = sessionid;
-        postData("https://ebanban.dev/api/performance", performanceActivity)
-        .then(data => {
-            console.log("Performance data succesfully uploaded");
-            console.log(data);
-            clearInterval(intervalPerf);
-        })
-        .catch(error => {
-            console.log("Server not running - can't upload performance data");
-        });
+        if(checkSession()){
+            putData("https://ebanban.dev/api/performance", performanceActivity)
+            .then(data => {
+                console.log("Performance data succesfully uploaded");
+                console.log(data);
+                clearInterval(intervalPerf);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload performance data");
+            });
+        }
+        else{
+            postData("https://ebanban.dev/api/performance", performanceActivity)
+            .then(data => {
+                console.log("Performance data succesfully uploaded");
+                console.log(data);
+                clearInterval(intervalPerf);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload performance data");
+            });
+        }
+        
     }, 10000);
 
 
