@@ -41,10 +41,10 @@ server.use('/static/:id', (req, res, next) => {
 
         switch(req.method){
             case "PUT": 
-                static.updateOne({ sessionid: req.body.sessionid }, req.body);
+                static.updateOne({ id: req.body.id }, req.body);
                 break;
             case "DELETE": 
-                static.deleteOne({ sessionid: req.body.sessionid });
+                static.deleteOne({ id: req.body.id });
                 break;
         }
 
