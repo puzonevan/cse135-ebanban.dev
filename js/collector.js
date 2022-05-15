@@ -58,10 +58,9 @@ const collectStaticPerformance = async() => {
     const intervalStatic = setInterval(() => {
         staticData.id = sessionid;
         if(checkSession()){
-            putData("https://ebanban.dev/api/static", staticData)
+            putData(`https://ebanban.dev/api/static/${sessionid}`, staticData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
-                console.log(data);
                 clearInterval(intervalStatic);
             })
             .catch(error => {
@@ -71,7 +70,6 @@ const collectStaticPerformance = async() => {
             postData("https://ebanban.dev/api/static", staticData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
-                console.log(data);
                 clearInterval(intervalStatic);
             })
             .catch(error => {
@@ -85,10 +83,9 @@ const collectStaticPerformance = async() => {
     const intervalPerf = setInterval(() => {
         performanceActivity.id = sessionid;
         if(checkSession()){
-            putData("https://ebanban.dev/api/performance", performanceActivity)
+            putData(`https://ebanban.dev/api/performance/${sessionid}`, performanceActivity)
             .then(data => {
                 console.log("Performance data succesfully uploaded");
-                console.log(data);
                 clearInterval(intervalPerf);
             })
             .catch(error => {
@@ -99,7 +96,6 @@ const collectStaticPerformance = async() => {
             postData("https://ebanban.dev/api/performance", performanceActivity)
             .then(data => {
                 console.log("Performance data succesfully uploaded");
-                console.log(data);
                 clearInterval(intervalPerf);
             })
             .catch(error => {
