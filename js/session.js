@@ -8,7 +8,7 @@ export const checkSession = () => {
 };
 
 export const getSession = () => {
-    return cookies.get("sessid");
+    return cookies.get("sessid").split(";")[0];
 };
 
 export const setCookie = (sessionid) => {
