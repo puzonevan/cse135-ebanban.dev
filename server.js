@@ -12,36 +12,74 @@ var server = jsonServer.create();
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(jsonServer.defaults());
+server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }))
 
+server.use('/static', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('static');
+
+        switch(req.method){
+            case "GET": 
+                static.find();
+                break;
+            case "POST": 
+                static.insertOne(req.body);
+                break;
+        }
+
+        next();
+    });
+});
+server.use('/static/:id', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('static');
+
+        switch(req.method){
+            case "PUT": 
+                static.updateOne({ sessionid: req.body.sessionid }, req.body);
+                break;
+            case "DELETE": 
+                static.deleteOne({ sessionid: req.body.sessionid });
+                break;
+        }
+
+        next();
+    });
+});
+
 // Add custom routes
-server.get('/static', (req, res) => { 
-    MongoClient.connect(url)
-    .then(client => {
-        const db = client.db('api');
-        const static = db.collection('static');
-        static.find().toArray()
-        .then(results => res.json(results));
-    });
-});
+// router.get('/static', (req, res) => { 
+//     MongoClient.connect(url)
+//     .then(client => {
+//         const db = client.db('api');
+//         const static = db.collection('static');
+//         static.find().toArray()
+//         .then(results => res.json(results));
+//     });
+// });
 
-server.post('/static', (req, res) => {
-    
-    MongoClient.connect(url)
-    .then(client => {
-        const db = client.db('api');
-        const static = db.collection('static');
-        static.insertOne(req.body);
-
-        static.find().toArray()
-        .then(results => res.json(results));
-    });
-});
 
 
 // Returns an Express router
 var router = jsonServer.router('db.json');
+// router.use('/static', (req, res, next) => {
+//     if(req.method == "POST"){
+//         MongoClient.connect(url)
+//         .then(client => {
+//             const db = client.db('api');
+//             const static = db.collection('static');
+//             static.insertOne(req.body);
+//         });
+//     }
+// });
+
 
 server.use(router);
+
 
 server.listen(3000);
