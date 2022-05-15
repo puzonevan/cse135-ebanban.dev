@@ -1,20 +1,10 @@
-const { MongoClient } = require('mongodb');
+let MongoClient = require('mongodb').MongoClient;
 
-const uri = 'mongodb://localhost:27017';
-const client = new MongoClient(uri);
-
-try{
-    await client.connect();
-}
-catch (e){
-    console.error(e);
-}
-finally{
-    client.close();
-}
+let url = 'mongodb://localhost:27017';
 
 // app.js file
 var jsonServer = require('json-server');
+
 
 // Returns an Express server
 var server = jsonServer.create();
@@ -23,38 +13,22 @@ var server = jsonServer.create();
 server.use(jsonServer.defaults());
 
 // Add custom routes
-// server.get('/custom', function (req, res) { res.json({ msg: 'hello' }) })
-server.get('/api/static', (req, res) => {
-    try{
-        await client.connect();
-    }
-    catch(e){
-        console.error(e);
-    }
-    finally{
-        client.close();
-    }
+server.get('/static', (req, res) => { 
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('static');
+        static.find().toArray()
+        .then(results => res.json(results));
+    });
 });
 
-server.post('/api/static', (req, res) => {
-    try{
-        await client.connect();
-        await client.db('api').collection('static').insertOne(req.body);
-        res.status(201).send();
-    }
-    catch(e){
-        console.error(e);
-        res.status(400).send();
-    }
-    finally{
-        client.close();
-    }
 
-})
+
 
 // Returns an Express router
 var router = jsonServer.router('db.json');
 
 server.use(router);
 
-server.listen(3000, 'ebanban.dev');
+server.listen(3000);
