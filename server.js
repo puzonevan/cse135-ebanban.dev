@@ -24,7 +24,33 @@ server.use(jsonServer.defaults());
 
 // Add custom routes
 // server.get('/custom', function (req, res) { res.json({ msg: 'hello' }) })
+server.get('/api/static', (req, res) => {
+    try{
+        await client.connect();
+    }
+    catch(e){
+        console.error(e);
+    }
+    finally{
+        client.close();
+    }
+});
 
+server.post('/api/static', (req, res) => {
+    try{
+        await client.connect();
+        await client.db('api').collection('static').insertOne(req.body);
+        res.status(201).send();
+    }
+    catch(e){
+        console.error(e);
+        res.status(400).send();
+    }
+    finally{
+        client.close();
+    }
+
+})
 
 // Returns an Express router
 var router = jsonServer.router('db.json');
