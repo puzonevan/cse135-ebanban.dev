@@ -15,6 +15,8 @@ const retrieveCookie = async() => {
         await getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = (data.length + 1).toString();
+        })
+        .then(() => {
             setCookie(sessionid);
             console.log(getSession());
         })
