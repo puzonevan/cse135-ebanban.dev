@@ -15,6 +15,7 @@ const retrieveCookie = async() => {
         await getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = (data.length + 1).toString();
+            setCookie(sessionid);
         })
         .catch(e => console.log("Server Down"));
     }
@@ -43,23 +44,20 @@ const collectStaticPerformance = async() => {
     const perf = performance.getEntriesByType("navigation");
 
     let performanceActivity = {
+        "id": sessionid,
         "load-time": perf[0].toJSON(), 
         "start": perf[0].connectStart, 
         "end": perf[0].connectEnd, 
         "total-time": perf[0].connectEnd - perf[0].connectStart
     }
 
-    console.log(staticData);
-    console.log(performanceActivity);
-
-
     // Request to post data every 10 seconds
     const intervalStatic = setInterval(() => {
         staticData.id = sessionid;
-        console.log(staticData);
         postData("https://ebanban.dev/api/static", staticData)
         .then(data => {
             console.log("Static data succesfully uploaded");
+            console.log(data);
             clearInterval(intervalStatic);
         })
         .catch(error => {
@@ -67,17 +65,19 @@ const collectStaticPerformance = async() => {
         });
     }, 10000);
 
-    // // Request to post data every 10 seconds
-    // const intervalPerf = setInterval(() => {
-    //     postData("https://ebanban.dev/api/performance", performanceActivity)
-    //     .then(data => {
-    //         console.log("Performance data succesfully uploaded");
-    //         clearInterval(intervalPerf);
-    //     })
-    //     .catch(error => {
-    //         console.log("Server not running - can't upload performance data");
-    //     });
-    // }, 10000);
+    // Request to post data every 10 seconds
+    const intervalPerf = setInterval(() => {
+        performanceActivity.id = sessionid;
+        postData("https://ebanban.dev/api/performance", performanceActivity)
+        .then(data => {
+            console.log("Performance data succesfully uploaded");
+            console.log(data);
+            clearInterval(intervalPerf);
+        })
+        .catch(error => {
+            console.log("Server not running - can't upload performance data");
+        });
+    }, 10000);
 
 
 }
