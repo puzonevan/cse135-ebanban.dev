@@ -52,6 +52,43 @@ server.use('/static/:id', (req, res, next) => {
     });
 });
 
+server.use('/performance', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('performance');
+
+        switch(req.method){
+            case "GET": 
+                static.find();
+                break;
+            case "POST": 
+                static.insertOne(req.body);
+                break;
+        }
+
+        next();
+    });
+});
+server.use('/performance/:id', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('performance');
+
+        switch(req.method){
+            case "PUT": 
+                static.replaceOne({ "id": req.params.id }, req.body);
+                break;
+            case "DELETE": 
+                static.deleteOne({ "id": req.params.id });
+                break;
+        }
+
+        next();
+    });
+});
+
 // Add custom routes
 // router.get('/static', (req, res) => { 
 //     MongoClient.connect(url)
