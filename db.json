@@ -10,37 +10,10 @@
   ],
   "profile": { "name": "typicode" }, 
   "static": [
-    {
-      "id": 1,
-      "test": true
-    }, 
-    {
-      "id": 2,
-      "test": true
-    }
   ],
   "performance": [
-    {
-      "id": 1, 
-      "test": true
-    }
   ], 
   "activity": [
-    {
-      "id": 1, 
-      "mouse": [
-
-      ], 
-      "keyboard": [
-        
-      ], 
-      "idle": [
-
-      ], 
-      "pages": [
-        
-      ]
-    }
   ]
   
 }
