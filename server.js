@@ -41,10 +41,10 @@ server.use('/static/:id', (req, res, next) => {
 
         switch(req.method){
             case "PUT": 
-                static.updateOne({ id: req.body.id }, req.body);
+                static.replaceOne({ "id": req.params.id }, req.body);
                 break;
             case "DELETE": 
-                static.deleteOne({ id: req.body.id });
+                static.deleteOne({ "id": req.params.id });
                 break;
         }
 
@@ -67,17 +67,6 @@ server.use('/static/:id', (req, res, next) => {
 
 // Returns an Express router
 var router = jsonServer.router('db.json');
-// router.use('/static', (req, res, next) => {
-//     if(req.method == "POST"){
-//         MongoClient.connect(url)
-//         .then(client => {
-//             const db = client.db('api');
-//             const static = db.collection('static');
-//             static.insertOne(req.body);
-//         });
-//     }
-// });
-
 
 server.use(router);
 
