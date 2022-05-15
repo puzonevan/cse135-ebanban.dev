@@ -1,6 +1,6 @@
 
 import { postData, getData, deleteData, putData, checkCSS, checkImages } from './helper.js';
-import { getSession, checkSession } from './session.js';
+import { getSession, checkSession, setCookie } from './session.js';
 
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
