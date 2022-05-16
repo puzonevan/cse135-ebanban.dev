@@ -75,7 +75,7 @@ const setupSession = async() => {
         });
 
         const intervalStatic = setInterval(() => {
-            putData(`${url}/static`, staticData)
+            putData(`${url}/static/${sessionid}`, staticData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
                 clearInterval(intervalStatic);
@@ -86,7 +86,7 @@ const setupSession = async() => {
         }, 10000);
     
         const intervalPerf = setInterval(() => {
-            putData(`${url}/performance`, performanceData)
+            putData(`${url}/performance/${sessionid}`, performanceData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
                 clearInterval(intervalPerf);
@@ -97,7 +97,7 @@ const setupSession = async() => {
         }, 10000);
     
         const intervalActivity = setInterval(() => {
-            putData(`${url}/activity`, activityData)
+            putData(`${url}/activity/${sessionid}`, activityData)
             .then(data => {
                 console.log("Static data succesfully uploaded");
                 clearInterval(intervalActivity);
