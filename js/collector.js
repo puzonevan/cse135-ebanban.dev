@@ -216,22 +216,15 @@ window.addEventListener("load", async() => {
         scrollidle += 1;
 
         if(moveidle > 2){
-            // Post mouse event 
-            // if(checkSession()){
-            //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, moveevent)
-            //     .catch(error => {
-            //         console.log("Can't upload movement data for some reason");
-            //     });
-            // }
+            // Update data, make request, and set move to 0 
+            activityData.mouse.push(moveevent);
+            putData(`${url}/activity/${sessionid}`, activityData)
+            moveidle = 0;
         }
         if(scrollidle > 2){
-            // Post scroll event
-            // if(checkSession()){
-            //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, scrollevent)
-            //     .catch(error => {
-            //         console.log("Can't upload scroll data for some reason");
-            //     });
-            // }   
+            // Update data, make request, and set scroll to 0 
+            activityData.mouse.push(scrollevent);
+            putData(`${url}/activity/${sessionid}`, activityData)
             scrollidle = 0;
         }
     }, 1000);
@@ -244,9 +237,16 @@ window.addEventListener('beforeunload', (e) =>{
     const leave = new Date().toString();
     // console.log(`User Leaves: ${leave}`);
     pageinfo.leave = leave;
+
+    // Update Activity Data
+    activityData.pageinfo.push(pageinfo);
+
+    // Make Request 
+    putData(`${url}/activity/${sessionid}`, activityData)
 });
 
 window.addEventListener('mousemove', (e) =>{
+    // Debug
     // console.log(`(${e.clientX}, ${e.clientY})`);
 
     // Idle time 0 because user activity 
@@ -259,6 +259,7 @@ window.addEventListener('mousemove', (e) =>{
 });
 
 window.addEventListener('click', (e) => {
+    // Debug
     // console.log(e.button);
 
     // Idle time 0 because user activity
@@ -267,17 +268,15 @@ window.addEventListener('click', (e) => {
     // Update object
     clickevent.button = e.button;
 
-    // if(checkSession()){
-    //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, clickevent)
-    //     .catch(error => {
-    //         console.log("Can't upload click data for some reason");
-    //     });
-    // }   
+    // Update activity data 
     activityData.mouse.push(clickevent);
+
+    // Make Request
     putData(`${url}/activity/${sessionid}`, activityData)
 });
 
 window.addEventListener('scroll', (e) => {
+    // Debug
     // console.log(`X: ${window.scrollX} Y: ${window.scrollY}`);
 
     // Idle time 0 because user activity 
