@@ -74,7 +74,38 @@ const setupSession = async() => {
             activityData.data = [data.data, activityData.data];
         });
 
-
+        const intervalStatic = setInterval(() => {
+            putData(`${url}/static`, staticData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalStatic);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload static data");
+            });
+        }, 10000);
+    
+        const intervalPerf = setInterval(() => {
+            putData(`${url}/performance`, performanceData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalPerf);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload performance data");
+            });
+        }, 10000);
+    
+        const intervalActivity = setInterval(() => {
+            putData(`${url}/activity`, activityData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalActivity);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload activity data");
+            });
+        }, 10000);
     }
     // Else, set up a new session 
     else{
@@ -93,40 +124,41 @@ const setupSession = async() => {
         })
         .catch(e => console.log(e));
         
+        const intervalStatic = setInterval(() => {
+            postData(`${url}/static`, staticData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalStatic);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload static data");
+            });
+        }, 10000);
+    
+        const intervalPerf = setInterval(() => {
+            postData(`${url}/performance`, performanceData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalPerf);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload performance data");
+            });
+        }, 10000);
+    
+        const intervalActivity = setInterval(() => {
+            postData(`${url}/activity`, activityData)
+            .then(data => {
+                console.log("Static data succesfully uploaded");
+                clearInterval(intervalActivity);
+            })
+            .catch(error => {
+                console.log("Server not running - can't upload activity data");
+            });
+        }, 10000);
     }
 
-    const intervalStatic = setInterval(() => {
-        postData(`${url}/static`, staticData)
-        .then(data => {
-            console.log("Static data succesfully uploaded");
-            clearInterval(intervalStatic);
-        })
-        .catch(error => {
-            console.log("Server not running - can't upload static data");
-        });
-    }, 10000);
-
-    const intervalPerf = setInterval(() => {
-        postData(`${url}/performance`, performanceData)
-        .then(data => {
-            console.log("Static data succesfully uploaded");
-            clearInterval(intervalPerf);
-        })
-        .catch(error => {
-            console.log("Server not running - can't upload performance data");
-        });
-    }, 10000);
-
-    const intervalActivity = setInterval(() => {
-        postData(`${url}/activity`, activityData)
-        .then(data => {
-            console.log("Static data succesfully uploaded");
-            clearInterval(intervalActivity);
-        })
-        .catch(error => {
-            console.log("Server not running - can't upload activity data");
-        });
-    }, 10000);
+    
     
 }
 
