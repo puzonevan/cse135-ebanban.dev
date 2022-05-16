@@ -89,18 +89,42 @@ server.use('/performance/:id', (req, res, next) => {
     });
 });
 
-// Add custom routes
-// router.get('/static', (req, res) => { 
-//     MongoClient.connect(url)
-//     .then(client => {
-//         const db = client.db('api');
-//         const static = db.collection('static');
-//         static.find().toArray()
-//         .then(results => res.json(results));
-//     });
-// });
+server.use('/activity', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('activity');
 
+        switch(req.method){
+            case "GET": 
+                static.find();
+                break;
+            case "POST": 
+                static.insertOne(req.body);
+                break;
+        }
 
+        next();
+    });
+});
+server.use('/activity/:id', (req, res, next) => {
+    MongoClient.connect(url)
+    .then(client => {
+        const db = client.db('api');
+        const static = db.collection('activity');
+
+        switch(req.method){
+            case "PUT": 
+                static.replaceOne({ "id": req.params.id }, req.body);
+                break;
+            case "DELETE": 
+                static.deleteOne({ "id": req.params.id });
+                break;
+        }
+
+        next();
+    });
+});
 
 // Returns an Express router
 var router = jsonServer.router('db.json');

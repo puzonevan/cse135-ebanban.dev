@@ -88,7 +88,7 @@ const setupSession = async() => {
         const intervalPerf = setInterval(() => {
             putData(`${url}/performance/${sessionid}`, performanceData)
             .then(data => {
-                console.log("Static data succesfully uploaded");
+                console.log("Performance data succesfully uploaded");
                 clearInterval(intervalPerf);
             })
             .catch(error => {
@@ -99,7 +99,7 @@ const setupSession = async() => {
         const intervalActivity = setInterval(() => {
             putData(`${url}/activity/${sessionid}`, activityData)
             .then(data => {
-                console.log("Static data succesfully uploaded");
+                console.log("Activity data succesfully uploaded");
                 clearInterval(intervalActivity);
             })
             .catch(error => {
@@ -138,7 +138,7 @@ const setupSession = async() => {
         const intervalPerf = setInterval(() => {
             postData(`${url}/performance`, performanceData)
             .then(data => {
-                console.log("Static data succesfully uploaded");
+                console.log("Performance data succesfully uploaded");
                 clearInterval(intervalPerf);
             })
             .catch(error => {
@@ -149,7 +149,7 @@ const setupSession = async() => {
         const intervalActivity = setInterval(() => {
             postData(`${url}/activity`, activityData)
             .then(data => {
-                console.log("Static data succesfully uploaded");
+                console.log("Activity data succesfully uploaded");
                 clearInterval(intervalActivity);
             })
             .catch(error => {
@@ -181,12 +181,11 @@ let scrollevent = {
     "x": 0, 
     "y": 0
 };
-
 let pageinfo = {
     "enter": 0, 
     "leave": 0, 
     "page": "",
-}
+};
 
 
 // User enters page
@@ -271,6 +270,8 @@ window.addEventListener('click', (e) => {
     //         console.log("Can't upload click data for some reason");
     //     });
     // }   
+    activityData.mouse.push(clickevent);
+    putData(`${url}/activity/${sessionid}`, activityData)
 });
 
 window.addEventListener('scroll', (e) => {
