@@ -10,27 +10,32 @@
 
 </head>
 <body>
-    <zing-gri caption="Static" height="50vh">
+    <zing-grid caption="Static" height="200">
         <zg-data src="https://ebanban.dev/api/static" options='{"recordPath": "0.data"}'></zg-data>
+        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Performance" height="50vh">
+    <zing-grid caption="Performance" height="200">
         <zg-data src="https://ebanban.dev/api/performance" options='{"recordPath": "0.data"}'></zg-data>
+        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Mouse" height="50vh">
+    <zing-grid caption="Mouse" height="200">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.mouse"}'></zg-data>
+        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
     <zing-grid caption="Keyboard" height="50vh">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.keyboard"}'></zg-data>
+        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Idle" height="50vh">
+    <zing-grid caption="Idle" height="200">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.idle"}'></zg-data>
+        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Page Info" height="50vh">
+    <zing-grid caption="Page Info" height="200">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.pageinfo"}'></zg-data>
     </zing-grid>
 </body>
