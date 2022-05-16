@@ -118,7 +118,7 @@ const setupSession = async() => {
     }, 10000);
 
     const intervalActivity = setInterval(() => {
-        postData(`${url}/static`, activityData)
+        postData(`${url}/activity`, activityData)
         .then(data => {
             console.log("Static data succesfully uploaded");
             clearInterval(intervalActivity);
