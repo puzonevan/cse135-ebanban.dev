@@ -189,7 +189,13 @@ let pageinfo = {
     "leave": 0, 
     "page": "",
 };
-
+let keyevent = {
+    "key": ""
+}
+let idleevent = {
+    "end": "", 
+    "length": 0
+}
 
 // User enters page
 window.addEventListener("load", async() => {
@@ -245,10 +251,17 @@ window.addEventListener('beforeunload', (e) =>{
     putData(`${url}/activity/${sessionid}`, activityData)
 });
 
+// Mouse move
 window.addEventListener('mousemove', (e) =>{
     // Debug
     // console.log(`(${e.clientX}, ${e.clientY})`);
 
+    if(idle > 2){
+        idleevent.date = new Date().toString();
+        idleevent.length = idle;
+        activityData.idle.push(idleevent);
+        putData(`${url}/activity/${sessionid}`, activityData);
+    }
     // Idle time 0 because user activity 
     idle = 0;
     moveidle = 0;
@@ -258,10 +271,17 @@ window.addEventListener('mousemove', (e) =>{
     moveevent.y = e.clientY;
 });
 
+// Mouse clicks
 window.addEventListener('click', (e) => {
     // Debug
     // console.log(e.button);
 
+    if(idle > 2){
+        idleevent.date = new Date().toString();
+        idleevent.length = idle;
+        activityData.idle.push(idleevent);
+        putData(`${url}/activity/${sessionid}`, activityData);
+    }
     // Idle time 0 because user activity
     idle = 0;
 
@@ -272,13 +292,20 @@ window.addEventListener('click', (e) => {
     activityData.mouse.push(clickevent);
 
     // Make Request
-    putData(`${url}/activity/${sessionid}`, activityData)
+    putData(`${url}/activity/${sessionid}`, activityData);
 });
 
+// Scroll 
 window.addEventListener('scroll', (e) => {
     // Debug
     // console.log(`X: ${window.scrollX} Y: ${window.scrollY}`);
 
+    if(idle > 2){
+        idleevent.date = new Date().toString();
+        idleevent.length = idle;
+        activityData.idle.push(idleevent);
+        putData(`${url}/activity/${sessionid}`, activityData);
+    }
     // Idle time 0 because user activity 
     idle = 0;
     scrollidle = 0;
@@ -287,3 +314,26 @@ window.addEventListener('scroll', (e) => {
     scrollevent.x = window.scrollX;
     scrollevent.y = window.scrollY;
 });
+
+// Keyboard
+window.addEventListener('keyup', (e) => {
+
+    if(idle > 2){
+        idleevent.date = new Date().toString();
+        idleevent.length = idle;
+        activityData.idle.push(idleevent);
+        putData(`${url}/activity/${sessionid}`, activityData);
+    }
+    idle = 0;
+
+    // Update object
+    keyevent.key = e.key;
+
+    // Update activity data
+    activityData.keyboard.push(keyevent);
+
+    // Make Request
+    putData(`${url}/activity/${sessionid}`, activityData);
+
+});
+
