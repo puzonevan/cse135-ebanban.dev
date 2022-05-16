@@ -5,108 +5,132 @@ import { getSession, checkSession, setCookie } from './session.js';
 let collectorHeaders = new Headers();
 collectorHeaders.set("Content-Type", "application/javascript");
 
+const url = "https://ebanban.dev/api"
+
+let staticData = {
+    "id": -1, 
+    "data": [
+        {
+            "user-agent": navigator.userAgent, 
+            "user-language": navigator.language, 
+            "cookies-enabled": navigator.cookieEnabled, 
+            "javascript-enabled": true, 
+            "images-enabled": false, 
+            "css-enabled": checkCSS(), 
+            "screen-dimension": `${window.screen.width}x${window.screen.height}`,
+            "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
+            "network-connection": navigator.connection.effectiveType
+        }
+    ]  
+}
+
+const perf = performance.getEntriesByType("navigation");
+let performanceData = {
+    "id": -1, 
+    "data": [
+        {
+            "load-time": perf[0].toJSON(), 
+            "start": perf[0].connectStart, 
+            "end": perf[0].connectEnd, 
+            "total-time": perf[0].connectEnd - perf[0].connectStart
+        }
+    ]
+}
+
+let activityData = {
+    "id": -1, 
+    "mouse": [], 
+    "keyboard": [],
+    "idle": [], 
+    "pageinfo": []
+}
+
 
 let sessionid = "-1";
-// Check for cookies 
-const retrieveCookie = async() => {
+// Setup session 
+const setupSession = async() => {
+    // If a session already exists
     if(checkSession()){
+
+        // Retrieve the session id
         sessionid = getSession();
-    }else{
+
+        // Update global static data to id
+        await getData(`${url}/static/${sessionid}`)
+        .then(data => {
+            staticData.id = data.id;
+            staticData.data = [...data.data, staticData.data];
+        });
+        // Update performance data to id
+        await getData(`${url}/performance/${sessionid}`)
+        .then(data => {
+            performanceData.id = data.id;
+            performanceData.data = [...data.data, performanceData.data];
+        });
+        // Update activity data to id
+        await getData(`${url}/activity/${sessionid}`)
+        .then(data => {
+            activityData.id = data.id;
+            activityData.data = [...data.data, activityData.data];
+        });
+
+
+    }
+    // Else, set up a new session 
+    else{
         await getData("https://ebanban.dev/api/static")
         .then(data => {
             sessionid = (data.length + 1).toString();
         })
         .then(() => {
             setCookie(sessionid);
-            console.log(getSession());
+
+            // Update the id of each data
+            staticData.id = sessionid;
+            performanceData.id = sessionid;
+            activityData.id = sessionid;
+
         })
         .catch(e => console.log(e));
-    }
-}
-
-
-
-/**
- * Data Collection
- */
-const collectStaticPerformance = async() => {
-
-    let staticData = {
-        "id": sessionid,
-        "user-agent": navigator.userAgent, 
-        "user-language": navigator.language, 
-        "cookies-enabled": navigator.cookieEnabled, 
-        "javascript-enabled": true, 
-        "images-enabled": false, 
-        "css-enabled": checkCSS(), 
-        "screen-dimension": `${window.screen.width}x${window.screen.height}`,
-        "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
-        "network-connection": navigator.connection
+        
     }
 
-    const perf = performance.getEntriesByType("navigation");
-
-    let performanceActivity = {
-        "id": sessionid,
-        "load-time": perf[0].toJSON(), 
-        "start": perf[0].connectStart, 
-        "end": perf[0].connectEnd, 
-        "total-time": perf[0].connectEnd - perf[0].connectStart
-    }
-
-    // Request to post data every 10 seconds
     const intervalStatic = setInterval(() => {
-        staticData.id = sessionid;
-        if(checkSession()){
-            putData(`https://ebanban.dev/api/static/${sessionid}`, staticData)
-            .then(data => {
-                console.log("Static data succesfully uploaded");
-                clearInterval(intervalStatic);
-            })
-            .catch(error => {
-                console.log("Server not running - can't upload static data");
-            });
-        }else{
-            postData("https://ebanban.dev/api/static", staticData)
-            .then(data => {
-                console.log("Static data succesfully uploaded");
-                clearInterval(intervalStatic);
-            })
-            .catch(error => {
-                console.log("Server not running - can't upload static data");
-            });
-        }
-        
+        postData(`${url}/static`, staticData)
+        .then(data => {
+            console.log("Static data succesfully uploaded");
+            clearInterval(intervalStatic);
+        })
+        .catch(error => {
+            console.log("Server not running - can't upload static data");
+        });
     }, 10000);
 
-    // Request to post data every 10 seconds
     const intervalPerf = setInterval(() => {
-        performanceActivity.id = sessionid;
-        if(checkSession()){
-            putData(`https://ebanban.dev/api/performance/${sessionid}`, performanceActivity)
-            .then(data => {
-                console.log("Performance data succesfully uploaded");
-                clearInterval(intervalPerf);
-            })
-            .catch(error => {
-                console.log("Server not running - can't upload performance data");
-            });
-        }
-        else{
-            postData("https://ebanban.dev/api/performance", performanceActivity)
-            .then(data => {
-                console.log("Performance data succesfully uploaded");
-                clearInterval(intervalPerf);
-            })
-            .catch(error => {
-                console.log("Server not running - can't upload performance data");
-            });
-        }
-        
+        postData(`${url}/performance`, performanceData)
+        .then(data => {
+            console.log("Static data succesfully uploaded");
+            clearInterval(intervalPerf);
+        })
+        .catch(error => {
+            console.log("Server not running - can't upload performance data");
+        });
     }, 10000);
 
-
+    const intervalActivity = setInterval(() => {
+        postData(`${url}/static`, activityData)
+        .then(data => {
+            console.log("Static data succesfully uploaded");
+            clearInterval(intervalActivity);
+        })
+        .catch(error => {
+            console.log("Server not running - can't upload activity data");
+        });
+    }, 10000);
+    
 }
+
+
 
 let idle = 0;
 let moveidle = 0;
@@ -136,11 +160,9 @@ let pageinfo = {
 // User enters page
 window.addEventListener("load", async() => {
 
-    await retrieveCookie();
+    await setupSession();
 
     console.log(sessionid);
-    // Collect static and performance data 
-    collectStaticPerformance();
 
     // Collect date user entered
     const enter = new Date().toString();
@@ -161,12 +183,21 @@ window.addEventListener("load", async() => {
 
         if(moveidle > 2){
             // Post mouse event 
-            
-            moveidle = 0;
+            // if(checkSession()){
+            //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, moveevent)
+            //     .catch(error => {
+            //         console.log("Can't upload movement data for some reason");
+            //     });
+            // }
         }
         if(scrollidle > 2){
             // Post scroll event
-
+            // if(checkSession()){
+            //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, scrollevent)
+            //     .catch(error => {
+            //         console.log("Can't upload scroll data for some reason");
+            //     });
+            // }   
             scrollidle = 0;
         }
     }, 1000);
@@ -201,6 +232,13 @@ window.addEventListener('click', (e) => {
 
     // Update object
     clickevent.button = e.button;
+
+    // if(checkSession()){
+    //     postData(`https://ebanban.dev/api/activity/${sessionid}/mouse`, clickevent)
+    //     .catch(error => {
+    //         console.log("Can't upload click data for some reason");
+    //     });
+    // }   
 });
 
 window.addEventListener('scroll', (e) => {
