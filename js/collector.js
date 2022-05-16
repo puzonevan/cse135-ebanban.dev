@@ -71,7 +71,10 @@ const setupSession = async() => {
         await getData(`${url}/activity/${sessionid}`)
         .then(data => {
             activityData.id = data.id;
-            activityData.data = [data.data, activityData.data];
+            activityData.mouse = data.mouse;
+            activityData.keyboard = data.keyboard;
+            activityData.idle = data.idle;
+            activityData.pageinfo = data.pageinfo;
         });
 
         const intervalStatic = setInterval(() => {
