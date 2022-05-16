@@ -7,10 +7,31 @@
     <script src="https://cdn.zinggrid.com/zinggrid.min.js" defer></script>
     <title>Database</title>
 
+
 </head>
 <body>
     <zing-grid>
         <zg-data src="https://ebanban.dev/api/static" options='{"recordPath": "0.data"}'></zg-data>
+    </zing-grid>
+
+    <zing-grid>
+        <zg-data src="https://ebanban.dev/api/performance" options='{"recordPath": "0.data"}'></zg-data>
+    </zing-grid>
+
+    <zing-grid>
+        <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.mouse"}'></zg-data>
+    </zing-grid>
+
+    <zing-grid>
+        <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.keyboard"}'></zg-data>
+    </zing-grid>
+
+    <zing-grid>
+        <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.idle"}'></zg-data>
+    </zing-grid>
+
+    <zing-grid>
+        <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.pageinfo"}'></zg-data>
     </zing-grid>
 </body>
 </html>
