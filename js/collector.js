@@ -59,13 +59,15 @@ const setupSession = async() => {
         await getData(`${url}/static/${sessionid}`)
         .then(data => {
             staticData.id = data.id;
-            staticData.data = data.data.push(staticData.data);
+            data.data.push(staticData.data);
+            staticData.data = data.data;
         });
         // Update performance data to id
         await getData(`${url}/performance/${sessionid}`)
         .then(data => {
             performanceData.id = data.id;
-            performanceData.data = data.data.push(performanceData.data);
+            data.data.push(performanceData.data)
+            performanceData.data = data.data;
         });
         // Update activity data to id
         await getData(`${url}/activity/${sessionid}`)
