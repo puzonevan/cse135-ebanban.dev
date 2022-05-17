@@ -191,9 +191,6 @@ let pageinfo = {
     "leave": 0, 
     "page": "",
 };
-let keyevent = {
-    "key": ""
-}
 let idleevent = {
     "end": "", 
     "length": 0
@@ -328,16 +325,8 @@ window.addEventListener('keydown', (e) => {
     }
     idle = 0;
 
-    // Update object
-    keyevent.key = e.key;
-    console.log(e.key);
-
     // Update activity data
-    activityData.keyboard.push(keyevent);
-    console.log(activityData);
-
-    // Make Request
-    putData(`${url}/activity/${sessionid}`, activityData);
+    activityData.keyboard.push({ "key": e.key });
 
 });
 
