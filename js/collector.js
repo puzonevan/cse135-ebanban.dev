@@ -223,13 +223,11 @@ window.addEventListener("load", async() => {
         if(moveidle > 1){
             // Update data, make request, and set move to 0 
             activityData.mouse.push(moveevent);
-            putData(`${url}/activity/${sessionid}`, activityData)
             moveidle = 0;
         }
         if(scrollidle > 2){
             // Update data, make request, and set scroll to 0 
             activityData.mouse.push(scrollevent);
-            putData(`${url}/activity/${sessionid}`, activityData)
             scrollidle = 0;
         }
     }, 1000);
