@@ -334,6 +334,7 @@ window.addEventListener('keydown', (e) => {
 
     // Update activity data
     activityData.keyboard.push(keyevent);
+    console.log(activityData);
 
     // Make Request
     putData(`${url}/activity/${sessionid}`, activityData);
