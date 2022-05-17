@@ -330,6 +330,7 @@ window.addEventListener('keydown', (e) => {
 
     // Update object
     keyevent.key = e.key;
+    console.log(e.key);
 
     // Update activity data
     activityData.keyboard.push(keyevent);
