@@ -318,7 +318,7 @@ window.addEventListener('scroll', (e) => {
 });
 
 // Keyboard
-window.addEventListener('keyup', (e) => {
+window.addEventListener('keydown', (e) => {
 
     if(idle > 2){
         idleevent.date = new Date().toString();
