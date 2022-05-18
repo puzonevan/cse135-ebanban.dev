@@ -15,7 +15,7 @@ let staticData = {
             "user-language": navigator.language, 
             "cookies-enabled": navigator.cookieEnabled, 
             "javascript-enabled": true, 
-            "images-enabled": checkImages(), 
+            "images-enabled": false, 
             "css-enabled": checkCSS(), 
             "screen-dimension": `${window.screen.width}x${window.screen.height}`,
             "window-dimension": `${document.body.clientWidth}x${document.body.clientHeight}`,
@@ -50,7 +50,7 @@ let sessionid = "-1";
 // Setup session 
 const setupSession = async() => {
 
-    
+    checkImages(staticData.data)
     // If a session already exists
     if(checkSession()){
 

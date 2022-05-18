@@ -50,16 +50,16 @@ export const checkCSS = () => {
     }
 }
 
-export const checkImages = () => {
+export const checkImages = (data) => {
     const image = document.createElement("img");
     image.setAttribute("src", "../hw3/images/postman.png");
     image.setAttribute("hidden", "true");
     image.setAttribute("id", "image-test");
     image.addEventListener("load", () => {
         if(!image.complete && image.naturalHeight === 0){
-            return false;
+            data['images-enabled'] = false;
         }else{
-            return true;
+            data['images-enabled'] = true;
         }
     })
     document.body.appendChild(image);
