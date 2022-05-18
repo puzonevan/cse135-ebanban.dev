@@ -343,7 +343,7 @@ window.addEventListener('keydown', (e) => {
     idle = 0;
 
     // Update activity data
-    console.log(e.key)
+    // console.log(e.key)
     activityData.keyboard.push(e.key);
 
 });
