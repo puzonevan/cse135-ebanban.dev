@@ -26,6 +26,32 @@ window.addEventListener('load', async() => {
     let click3 = 0;
     activity3.mouse.forEach(item => {if(item.type == 'click'){ click3++; }});
 
+    let afreq = 0;
+    let efreq = 0;
+    let ifreq = 0;
+    let ofreq = 0;
+    let ufreq = 0;
+    activity1.keyboard.forEach(item => {
+      switch(item){
+        case "a": 
+          afreq++;
+          break;
+        case "e": 
+          efreq++;
+          break;
+        case "i": 
+          ifreq++;
+          break;
+        case "o": 
+          ofreq++;
+          break;
+        case "u": 
+          ufreq++;
+          break;
+      }
+    });
+    let totalfreq = afreq + efreq + ifreq + ofreq + ufreq;
+
     // Render line chart
     const lineChart = {
       type: 'line', 
@@ -211,28 +237,28 @@ window.addEventListener('load', async() => {
         margin: "20 0 0 0"
       },
       series: [{
-        values: [11.38],
+        values: [afreq/totalfreq],
         text: "A",
         backgroundColor: '#50ADF5',
       },
       {
-        values: [56.94],
+        values: [efreq/totalfreq],
         text: "E",
         backgroundColor: '#FF7965',
       },
       {
-        values: [14.52],
+        values: [ifreq/totalfreq],
         text: 'I',
         backgroundColor: '#FFCB45',
       },
       {
         text: 'O',
-        values: [9.69],
+        values: [ofreq/totalfreq],
         backgroundColor: '#6877e5'
       },
       {
         text: 'U',
-        values: [7.48],
+        values: [ufreq/totalfreq],
         backgroundColor: '#6FB07F'
       }
       ]
