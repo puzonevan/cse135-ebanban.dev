@@ -6,37 +6,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.zinggrid.com/zinggrid.min.js" defer></script>
     <title>Database</title>
-
-
+    <style>
+        :root {
+            --zing-grid-font-family: "Comic Sans MS";
+        }
+    </style>
 </head>
 <body>
-    <zing-grid caption="Static" height="200">
+    <zing-grid caption="Static" height="200" theme="ios">
         <zg-data src="https://ebanban.dev/api/static" options='{"recordPath": "0.data"}'></zg-data>
         <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Performance" height="200">
+    <zing-grid caption="Performance" height="200" theme="ios">
         <zg-data src="https://ebanban.dev/api/performance" options='{"recordPath": "0.data"}'></zg-data>
         <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Mouse" height="200">
+    <zing-grid caption="Mouse" height="200" theme="ios">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.mouse"}'></zg-data>
-        <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Keyboard" height="50vh">
-        <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.keyboard"}'></zg-data>
+    <zing-grid caption="Keyboard" height="200" theme="ios" id="keyboard">
         <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
+    
 
-    <zing-grid caption="Idle" height="200">
+    <zing-grid caption="Idle" height="200" theme="ios">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.idle"}'></zg-data>
         <zg-param name="loadByScroll" value="true"></zg-param>
     </zing-grid>
 
-    <zing-grid caption="Page Info" height="200">
+    <zing-grid caption="Page Info" height="200" theme="ios">
         <zg-data src="https://ebanban.dev/api/activity" options='{"recordPath": "0.pageinfo"}'></zg-data>
     </zing-grid>
+
+    <script>
+        window.addEventListener("load", () => {
+            const zgRef = document.getElementById('keyboard');
+            let intervalTimeoutId = setInterval(() => {
+                fetch('https://ebanban.dev/api/activity/2')
+                .then(res => res.json())
+                .then(data => {
+                    const newData = data.keyboard.map(item => {
+                        return {
+                            "key": item
+                        };
+                    });
+                    zgRef.setData(newData);
+                })
+                .catch(err => console.error('--- Error In Fetch Occurred ---', err));
+            }, 1000);
+        })
+    </script>
 </body>
 </html>
