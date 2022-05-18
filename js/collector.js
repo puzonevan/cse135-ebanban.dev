@@ -50,7 +50,8 @@ let sessionid = "-1";
 // Setup session 
 const setupSession = async() => {
 
-    checkImages(staticData.data)
+    checkImages(staticData.data[0]);
+
     // If a session already exists
     if(checkSession()){
 
