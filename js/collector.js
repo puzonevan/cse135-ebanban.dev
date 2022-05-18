@@ -344,7 +344,7 @@ window.addEventListener('keydown', (e) => {
 
     // Update activity data
     console.log(e.key)
-    activityData.keyboard.push({ "key": e.key });
+    activityData.keyboard.push(e.key);
 
 });
 
