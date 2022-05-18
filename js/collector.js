@@ -216,6 +216,11 @@ window.addEventListener("load", async() => {
     // Interval for checking idle time, move event, and scroll event
     // Checking every second
     const idleInterval = setInterval(() => {
+
+        if(idle == 0){
+            activityData.idle.push(idleevent);
+            putData(`${url}/activity/${sessionid}`, activityData);
+        }
         idle += 1;
         moveidle += 1;
         scrollidle += 1;
@@ -256,8 +261,6 @@ window.addEventListener('mousemove', (e) =>{
     if(idle > 2){
         idleevent.date = new Date().toString();
         idleevent.length = idle;
-        activityData.idle.push(idleevent);
-        putData(`${url}/activity/${sessionid}`, activityData);
     }
     // Idle time 0 because user activity 
     idle = 0;
@@ -276,8 +279,6 @@ window.addEventListener('click', (e) => {
     if(idle > 2){
         idleevent.date = new Date().toString();
         idleevent.length = idle;
-        activityData.idle.push(idleevent);
-        putData(`${url}/activity/${sessionid}`, activityData);
     }
     // Idle time 0 because user activity
     idle = 0;
@@ -300,8 +301,6 @@ window.addEventListener('scroll', (e) => {
     if(idle > 2){
         idleevent.date = new Date().toString();
         idleevent.length = idle;
-        activityData.idle.push(idleevent);
-        putData(`${url}/activity/${sessionid}`, activityData);
     }
     // Idle time 0 because user activity 
     idle = 0;
@@ -318,8 +317,6 @@ window.addEventListener('keydown', (e) => {
     if(idle > 2){
         idleevent.date = new Date().toString();
         idleevent.length = idle;
-        activityData.idle.push(idleevent);
-        putData(`${url}/activity/${sessionid}`, activityData);
     }
     idle = 0;
 
