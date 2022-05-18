@@ -179,6 +179,8 @@ let moveevent = {
 };
 let clickevent = {
     "type": "click", 
+    "x": 0, 
+    "y": 0, 
     "button": 0
 };
 let scrollevent = {
@@ -288,6 +290,8 @@ window.addEventListener('click', (e) => {
     idle = 0;
 
     // Update object
+    clickevent.x = e.clientX;
+    clickevent.y = e.clientY;
     clickevent.button = e.button;
 
     // Update activity data 
