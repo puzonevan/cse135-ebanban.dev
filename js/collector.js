@@ -88,7 +88,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload static data");
             });
-        }, 10000);
+        }, 1000);
     
         const intervalPerf = setInterval(() => {
             putData(`${url}/performance/${sessionid}`, performanceData)
@@ -99,7 +99,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload performance data");
             });
-        }, 10000);
+        }, 1000);
     
         const intervalActivity = setInterval(() => {
             putData(`${url}/activity/${sessionid}`, activityData)
@@ -110,7 +110,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload activity data");
             });
-        }, 10000);
+        }, 1000);
     }
     // Else, set up a new session 
     else{
@@ -138,7 +138,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload static data");
             });
-        }, 10000);
+        }, 1000);
     
         const intervalPerf = setInterval(() => {
             postData(`${url}/performance`, performanceData)
@@ -149,7 +149,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload performance data");
             });
-        }, 10000);
+        }, 1000);
     
         const intervalActivity = setInterval(() => {
             postData(`${url}/activity`, activityData)
@@ -160,7 +160,7 @@ const setupSession = async() => {
             .catch(error => {
                 console.log("Server not running - can't upload activity data");
             });
-        }, 10000);
+        }, 1000);
     }
 
     
