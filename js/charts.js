@@ -2,9 +2,29 @@ import { getData } from './helper.js';
 
 
 // because this Javascript is injected into the document head
-window.addEventListener('load', function() {
+window.addEventListener('load', async() => {
 
     // https://www.zingchart.com/docs/api/json-configuration/
+    let activity1 = await getData("https://ebanban.dev/api/activity/1");
+    let activity2 = await getData("https://ebanban.dev/api/activity/2");
+    let activity3 = await getData("https://ebanban.dev/api/activity/3");
+    
+    let idle1 = activity1.idle.map(item => item.length);
+    let idle2 = activity2.idle.map(item => item.length);
+    let idle3 = activity3.idle.map(item => item.length);
+
+    let mouse1 = 0;
+    activity1.mouse.forEach(item => {if(item.type == 'move'){ mouse1++; }});
+    let mouse2 = 0;
+    activity2.mouse.forEach(item => {if(item.type == 'move'){ mouse2++; }});
+    let mouse3 = 0;
+    activity3.mouse.forEach(item => {if(item.type == 'move'){ mouse3++; }});
+    let click1 = 0;
+    activity1.mouse.forEach(item => {if(item.type == 'click'){ click1++; }});
+    let click2 = 0;
+    activity2.mouse.forEach(item => {if(item.type == 'click'){ click2++; }});
+    let click3 = 0;
+    activity3.mouse.forEach(item => {if(item.type == 'click'){ click3++; }});
 
     // Render line chart
     const lineChart = {
@@ -41,48 +61,7 @@ window.addEventListener('load', function() {
         "minor-ticks": 0
       },
       "series": [{
-        "values": [
-          149.2,
-          174.3,
-          187.7,
-          147.1,
-          129.6,
-          189.6,
-          230,
-          164.5,
-          171.7,
-          163.4,
-          194.5,
-          200.1,
-          193.4,
-          254.4,
-          287.8,
-          246,
-          199.9,
-          218.3,
-          244,
-          312.2,
-          284.5,
-          249.2,
-          305.2,
-          286.1,
-          347.7,
-          278,
-          240.3,
-          212.4,
-          237.1,
-          253.2,
-          186.1,
-          153.6,
-          168.5,
-          140.9,
-          86.9,
-          49.4,
-          24.7,
-          64.8,
-          114.4,
-          137.4
-        ],
+        "values": idle1,
         "text": "Session 1",
         "line-color": "#205375",
         "legend-item": {
@@ -105,48 +84,7 @@ window.addEventListener('load', function() {
         }
       },
       {
-        "values": [
-          714.6,
-          656.3,
-          660.6,
-          729.8,
-          731.6,
-          682.3,
-          654.6,
-          673.5,
-          700.6,
-          755.2,
-          817.8,
-          809.1,
-          815.2,
-          836.6,
-          897.3,
-          896.9,
-          866.5,
-          835.8,
-          797.9,
-          784.7,
-          802.8,
-          749.3,
-          722.1,
-          688.1,
-          730.4,
-          661.5,
-          609.7,
-          630.2,
-          633,
-          604.2,
-          558.1,
-          581.4,
-          511.5,
-          556.5,
-          542.1,
-          599.7,
-          664.8,
-          725.3,
-          694.2,
-          690.5
-        ],
+        "values": idle2,
         "text": "Session 2",
         "line-color": "#F66B0E",
         "legend-item": {
@@ -169,48 +107,7 @@ window.addEventListener('load', function() {
         }
       },
       {
-        "values": [
-          536.9,
-          576.4,
-          639.3,
-          669.4,
-          708.7,
-          691.5,
-          681.7,
-          673,
-          701.8,
-          636.4,
-          637.8,
-          640.5,
-          653.1,
-          613.7,
-          583.4,
-          538,
-          506.7,
-          563.1,
-          541.4,
-          489.3,
-          434.7,
-          442.1,
-          482.3,
-          495.4,
-          556.1,
-          505.4,
-          463.8,
-          434.7,
-          377.4,
-          325.4,
-          351.7,
-          343.5,
-          333.2,
-          332,
-          378.9,
-          415.4,
-          385,
-          412.6,
-          445.9,
-          441.5
-        ],
+        "values": idle3,
         "text": "Session 3",
         "line-color": "#EB5353",
         "legend-item": {
@@ -274,13 +171,13 @@ window.addEventListener('load', function() {
       },
       series: [{
         // user 1 values
-        values: [23, 20, 27],
+        values: [mouse1, mouse2, mouse3],
         text: 'Mouse',
         backgroundColor: '#205375'
       },
       {
-        // user 3 values, linear data
-        values: [15, 22, 13],
+        // user 2 values
+        values: [click1, click2, click3],
         text: 'Clicks',
         backgroundColor: '#EB5353'
       }
