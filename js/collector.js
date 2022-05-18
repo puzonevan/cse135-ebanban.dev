@@ -191,10 +191,6 @@ let pageinfo = {
     "leave": 0, 
     "page": "",
 };
-let idleevent = {
-    "end": "", 
-    "length": 0
-}
 
 // User enters page
 window.addEventListener("load", async() => {
@@ -255,8 +251,10 @@ window.addEventListener('mousemove', (e) =>{
     // console.log(`(${e.clientX}, ${e.clientY})`);
 
     if(idle > 2){
-        idleevent.date = new Date().toString();
-        idleevent.length = idle;
+        let idleevent = {
+            "end": new Date().toString(), 
+            "length": idle
+        }
         if(!activityData.idle.includes(idleevent)){
             activityData.idle.push(idleevent);
         }
@@ -277,8 +275,10 @@ window.addEventListener('click', (e) => {
     // console.log(e.button);
 
     if(idle > 2){
-        idleevent.date = new Date().toString();
-        idleevent.length = idle;
+        let idleevent = {
+            "end": new Date().toString(), 
+            "length": idle
+        }
         if(!activityData.idle.includes(idleevent)){
             activityData.idle.push(idleevent);
         }
@@ -303,8 +303,10 @@ window.addEventListener('scroll', (e) => {
     // console.log(`X: ${window.scrollX} Y: ${window.scrollY}`);
 
     if(idle > 2){
-        idleevent.date = new Date().toString();
-        idleevent.length = idle;
+        let idleevent = {
+            "end": new Date().toString(), 
+            "length": idle
+        }
         if(!activityData.idle.includes(idleevent)){
             activityData.idle.push(idleevent);
         }
@@ -323,8 +325,10 @@ window.addEventListener('scroll', (e) => {
 window.addEventListener('keydown', (e) => {
 
     if(idle > 2){
-        idleevent.date = new Date().toString();
-        idleevent.length = idle;
+        let idleevent = {
+            "end": new Date().toString(), 
+            "length": idle
+        }
         if(!activityData.idle.includes(idleevent)){
             activityData.idle.push(idleevent);
         }
