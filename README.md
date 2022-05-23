@@ -63,7 +63,8 @@ and it changed the response header to what I wanted.
 I thoroughly gave this assignment my all, I started early, and I worked on this often, but due to time constraint and other class workload, I could not complete some things I wanted to complete.  
 - Sessioning is very basic with just session id's being like 1, 2, 3, etc. and they have no set expiration
 - Database being used is MongoDB and can check database through shell commands `use api` `db.static.find().pretty()` `db.performance.find().pretty()`
-- Data Visualization 
+- Local database helpful commands: `systemctl status mongod`, `systemctl start mongod`, `systemctl stop mongod`
+
 
 **Image Locations:** `/hw3/images`
 
@@ -80,3 +81,22 @@ I thoroughly gave this assignment my all, I started early, and I worked on this 
 - `/js/session.js` - sessioning through cookies 
 
 
+# HW 4 
+
+## Honest Notes 
+
+## Authentication 
+
+## User Management 
+
+**Basic Level Grader User:**
+
+**Basic Level Grader Pass:**
+
+**Admin Level Grader User:**
+
+**Admin Level Grader Pass:**
+
+## Dashboard
+
+## Report 
