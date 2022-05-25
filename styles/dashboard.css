@@ -5,11 +5,11 @@ main > *{
 }
 
 main > *:last-child{
-    display: block;
+    display: flex;
 }
 
 main > *:target{
-    display: block;
+    display: flex;
     animation: fade 300ms linear 1;
 }
 
@@ -70,7 +70,6 @@ main * {
 }
 
 #dashboard{
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -106,7 +105,8 @@ main * {
 .chart {
     width: 100%;
     min-height: 240px;
-    background: red;
+    background: #FFF;
+    border-radius: 5px;
 }
 
 #pie-chart{
@@ -114,4 +114,8 @@ main * {
 }
 #line-chart{
     width: 65%;
+}
+
+#users{
+    flex-direction: column;
 }
