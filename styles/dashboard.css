@@ -28,12 +28,12 @@ body{
 header{
     height: 100vh;
     width: 20%;
-    background: #242F9B;
+    background: #16003B;
 }
 
 header *{
     font-family: Helvetica;
-    color: #FFF;
+    color: #EFEFEF;
 }
 header h1{
     text-align: center;
@@ -43,15 +43,58 @@ header nav{
     margin: 0 auto;
 }
 header button{
-    background: #646FD4;
+    background: #F73D93;
     width: 80%;
-    margin-bottom: 0;
     border: none;
     border-radius: 5px;
+    padding: 12px 0;
+    text-transform: uppercase;
+}
+header ul{
+    list-style: none;
+    color: #7F8487;
+}
+header a{
+    text-decoration: none;
 }
 
 main{
     overflow: scroll;
     width: 80%;
     padding: 3% 5%;
+    background: #F5F5F5;
+}
+main * {
+    color: #16003B;
+    font-family: Helvetica;
+}
+
+#dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+#dashboard h2{
+    width: 100%;
+}
+.card{
+    background: #FFF;
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+}
+.card h3, .card p{
+    margin: 0;
+}
+.card figure{
+    height: 100%;
+    margin: 0;
+}
+.card img{
+    width: 48px;
+    height: auto;
 }
