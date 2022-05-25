@@ -77,6 +77,9 @@ main * {
 #dashboard h2{
     width: 100%;
 }
+#dashboard *{
+    margin: 12px 0;
+}
 .card{
     background: #FFF;
     width: 30%;
@@ -101,7 +104,14 @@ main * {
 }
 
 .chart {
-    height: 100%;
     width: 100%;
-    min-height: 150px;
+    min-height: 240px;
+    background: red;
+}
+
+#pie-chart{
+    width: 30%;
+}
+#line-chart{
+    width: 65%;
 }
